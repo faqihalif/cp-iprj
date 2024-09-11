@@ -16,8 +16,6 @@ import BackgroundPattern from '@/images/background.png'
 import UnderConstruction from '@/images/under-construction.webp'
 
 function show(props) {
-    console.log(props.data.data)
-
     return (
         <div
             style={{ backgroundImage: `url(${BackgroundPattern})`, backgroundSize: "100%", backgroundRepeat: 'no-repeat' }}

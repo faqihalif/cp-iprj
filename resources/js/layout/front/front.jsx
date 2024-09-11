@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { router } from '@inertiajs/react'
 import { usePage } from '@inertiajs/react'
 import { Link } from '@inertiajs/react'
+import { Head } from '@inertiajs/react'
 
 // loading
 import Loading from '@/components/ui/loading'
@@ -17,6 +18,9 @@ import LogoFooter from '@/images/logo-footer.png'
 
 // headless ui
 import { Popover, PopoverButton, PopoverPanel, PopoverBackdrop } from '@headlessui/react'
+
+// shadcn/ui
+import { Button } from "@/components/ui/button"
 
 const admin = props => {
     let { flash } = usePage().props
@@ -46,8 +50,12 @@ const admin = props => {
 
     return (
         <React.Fragment>
-            <div className="flex flex-col h-screen overflow-auto antialiased bg-white">
-                <div className="bg-white shadow ">
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </Head>
+
+            <div className="antialiased bg-white">
+                <div className="fixed z-10 w-full bg-white shadow">
                     {/* header desktop */}
                     <div className="hidden xl:flex">
                         <div className="container flex items-center justify-between py-3">
@@ -68,12 +76,22 @@ const admin = props => {
                                 <Link href="/facility" className="text-sm font-medium">Facility</Link>
                                 <Link href="/about-us" className="text-sm font-medium">About Us</Link>
                                 <Link href="/news" className="text-sm font-medium">News & Event</Link>
+                                {/* <Link href="/auth/login" className="flex">
+                                    <Button className="bg-green-600">
+                                        Login/Register
+                                    </Button>
+                                </Link> */}
+                                <Link href="/my-profile" className="flex">
+                                    <Button className="bg-green-600">
+                                        My Profile
+                                    </Button>
+                                </Link>
                             </div>
                             {/* end menu */}
                         </div>
                     </div>
                     {/* end header desktop */}
-                    
+
                     {/* header mobile */}
                     <div className="flex flex-col xl:hidden">
                         <Popover as="div" className="container flex items-center justify-between py-3 mx-auto">
@@ -111,6 +129,16 @@ const admin = props => {
                                         <Link href="/facility" className="text-sm font-medium" onClick={() => close()}>Facility</Link>
                                         <Link href="/about-us" className="text-sm font-medium" onClick={() => close()}>About Us</Link>
                                         <Link href="/news" className="text-sm font-medium" onClick={() => close()}>News & Event</Link>
+                                        <Link href="/auth/login" className="flex">
+                                            <Button className="bg-green-600">
+                                                Login/Register
+                                            </Button>
+                                        </Link>
+                                        <Link href="/my-profile" className="flex">
+                                            <Button className="bg-green-600">
+                                                My Profile
+                                            </Button>
+                                        </Link>
                                     </div>
                                 )}
                             </PopoverPanel>
@@ -121,7 +149,7 @@ const admin = props => {
                     {/* end header mobile */}
                 </div>
 
-                <div className="flex flex-col justify-between h-full overflow-auto">
+                <div className="pt-[88px] flex flex-col justify-between h-screen">
                     {/* main */}
                     {props.children}
                     {/* end main */}

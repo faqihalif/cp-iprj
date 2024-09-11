@@ -2,15 +2,7 @@ import React, { useState } from 'react'
 
 // front
 import Front from '@/layout/front/front'
-
-// inertia
-import { Link } from '@inertiajs/react'
-
-// lucide icons
-import { ChevronRight, Eye } from 'lucide-react'
-
-// background pattern
-import BackgroundPattern from '@/images/background.png'
+import Account from '@/pages/front/account/index'
 
 // shadcn/ui
 import { Button } from "@/components/ui/button"
@@ -23,13 +15,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
 
-// axios
-import axios from "axios"
-
-// lucide icon
-import { Loader2 } from "lucide-react"
-
-function login(props) {
+function index(props) {
     // state
     const [submitLoading, setSubmitLoading] = useState(false)
 
@@ -51,7 +37,7 @@ function login(props) {
         }
     })
 
-    const onSubmit = (values) => {
+    function onSubmit(values) {
         setSubmitLoading(true)
         axios.post(route('auth.login'), values).then(response => {
             console.log(response.data)
@@ -68,25 +54,30 @@ function login(props) {
     }
 
     return (
-        <div
-            style={{ backgroundImage: `url(${BackgroundPattern})`, backgroundSize: "100%", backgroundRepeat: 'no-repeat' }}
-        >
-            <div className="container py-4 space-y-8">
-                {/* title */}
-                <div className="space-y-8">
-                    <div className="flex items-center space-x-1">
-                        <Link href="/" className="text-xs">Home</Link>
-                        <ChevronRight className="w-4 h-4 text-gray-700" />
-                        <p className="text-xs">Login</p>
+        <>
+            {/* account information */}
+            <div>
+                <div className="flex items-center justify-between pb-1 lg:pb-4">
+                    <div>
+                        <p className="text-lg font-bold text-gray-700">My Profile</p>
                     </div>
-                    <p className="text-3xl font-bold text-gray-700">Login</p>
                 </div>
-                {/* end title */}
-
-                {/* content */}
-                <div className="w-full max-w-xs mx-auto space-y-8">
+                <div className="w-full max-w-md">
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                            <FormField
+                                control={form.control}
+                                name="fullname"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Fullname</FormLabel>
+                                        <FormControl>
+                                            <Input {...field} />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                             <FormField
                                 control={form.control}
                                 name="email"
@@ -100,14 +91,51 @@ function login(props) {
                                     </FormItem>
                                 )}
                             />
+                            <div className="flex justify-end">
+                                {
+                                    submitLoading == true ? (
+                                        <Button disabled>
+                                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                            Please wait
+                                        </Button>
+                                    ) : (
+                                        <Button type="submit">Update</Button>
+                                    )
+                                }
+                            </div>
+                        </form>
+                    </Form>
+                </div>
+            </div>
+            {/* end account information */}
+
+            {/* change password */}
+            <div>
+                <p className="pb-4 text-xl font-semibold text-gray-700">Change Password</p>
+                <div className="w-full max-w-md">
+                    <Form {...form}>
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                             <FormField
                                 control={form.control}
-                                name="password"
+                                name="fullname"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Password</FormLabel>
+                                        <FormLabel>Old Password</FormLabel>
                                         <FormControl>
-                                            <Input {...field} type="password" autoComplete='off' />
+                                            <Input {...field} type="password" />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>New Password</FormLabel>
+                                        <FormControl>
+                                            <Input {...field} type="password" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -121,34 +149,26 @@ function login(props) {
                                             Please wait
                                         </Button>
                                     ) : (
-                                        <Button type="submit">Login</Button>
+                                        <Button type="submit">Change Password</Button>
                                     )
                                 }
-                            </div>
-                            <div className="flex flex-col items-center justify-between pt-4">
-                                <div>
-                                    <Link href={route('auth.register')} className="text-sm font-semibold text-blue-600">Doesn't have account? Register here</Link>
-                                </div>
-                                <div>
-                                    <Link className="text-sm font-semibold text-blue-600">Forgot password? Click here</Link>
-                                </div>
                             </div>
                         </form>
                     </Form>
                 </div>
-                {/* end content */}
             </div>
-        </div>
+            {/* end change password */}
+        </>
     )
 }
 
 // Render Layout
-login.layout = page => {
+index.layout = page => {
     return (
-        <Front
-            children={page}
-        />
+        <Front>
+            <Account children={page} />
+        </Front>
     )
 }
 
-export default login
+export default index

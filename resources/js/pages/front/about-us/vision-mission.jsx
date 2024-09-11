@@ -16,25 +16,22 @@ function visionMission() {
                 <div className="space-y-2">
                     <div>
                         <p className="text-lg font-semibold text-gray-700">Vision</p>
-                        <p className="text-sm text-justify text-gray-700 md:text-base">To produce competent eye specialists who are able to overcome global competition in providing eye health services in the community based on clinical evidence and prioritizing patient safety by upholding professional ethics.</p>
+                        <p className="text-sm text-justify text-gray-700 md:text-base">Menyelenggarakan pendidikan tenaga kesehatan  mata yang mumpuni dalam pengetahuan dan keterampilan praktik klinis serta penelitian dalam menyelesaikan masalah kesehatan mata di Indonesia di ikuti memiliki kemampuan  untuk bersaing secara global.</p>
                     </div>
                     <div>
                         <p className="text-lg font-semibold text-gray-700">Mission</p>
                         <ul className="pl-5 list-disc">
                             <li className="text-sm text-justify text-gray-700 md:text-base">
-                                Organizing the education of eye specialist doctors who master the knowledge and skills to carry out clinical practice in terms of promotive, preventive, diagnostic, curative, and rehabilitative by upholding professional ethics in serving the community and being able to compete in global competition.
+                                Menghasilkan tenaga medis mata yang kompeten dengan berbasis bukti klinis disertai mengedepankan keselamatan pasien (patient’s safety) dan menjunjung tinggi etika profesi.
                             </li>
                             <li className="text-sm text-justify text-gray-700 md:text-base">
-                                Providing space to produce eye doctors who have insight and the ability to develop themselves, and adapt in achieving equality with the latest scientific and technological developments, so that they can provide complete Ophthalmology services and also understand the concept of value based services (prioritizing prevention efforts and utilizing digitalization so that the burden of health costs can be reduced).
+                                Memberi ruang untuk menghasilkan tenaga kesehatan mata yang mempunyai wawasan dan kemampuan untuk mengembangkan diri dalam pembelajaran sepanjang hayat (lifelong learning) serta dapat beradaptasi dalam mencapai kesetaraan dengan perkembangan keilmuan dan teknologi terkini, sehingga dapat memberikan pelayanan Oftalmologi yang memahami konsep pelayanan value based.
                             </li>
                             <li className="text-sm text-justify text-gray-700 md:text-base">
-                                Providing opportunities for students to dive into communities with various medical conditions and the availability of varying health services, which aims to enrich experience and form comprehensive thinking.
+                                Menyediakan kesempatan peserta didik untuk terjun dalam komunitas dengan berbagai kondisi medis dan ketersediaan pelayanan kesehatan yang bervariasi, yang bertujuan memperkaya pengalaman dan membentuk pemikiran yang komprehensif.
                             </li>
                             <li className="text-sm text-justify text-gray-700 md:text-base">
-                                Educating eye doctors who have an entrepreneurial spirit and understand hospital management along with the ability to initiate partnership programs with networks in eye health services nationally and internationally.
-                            </li>
-                            <li className="text-sm text-justify text-gray-700 md:text-base">
-                                Motivating lifelong learning by opening wide and fair access to the latest eye health knowledge and skills.
+                                Mendidik tenaga kesehatan mata yang memiliki jiwa entrepreneur dan mengerti manajemen rumah sakit disertai kemampuan menginisiasi program kemitrakerjaan dengan jejaring dalam pelayanan kesehatan mata secara nasional maupun internasional.
                             </li>
                         </ul>
                     </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Front\LecturerController;
 use App\Http\Controllers\Front\FacilityController;
 use App\Http\Controllers\Front\AboutUsController;
 use App\Http\Controllers\Front\NewsController;
+use App\Http\Controllers\Front\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,11 @@ Route::get('/about-us/our-teams', [AboutUsController::class, 'ourTeams'])->name(
 Route::get('/about-us/educational-objective', [AboutUsController::class, 'educationalObjective'])->name('aboutUs.educationalObjective');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+
+Route::get('/my-profile', [AccountController::class, 'index'])->name('profile.index');
+Route::get('/application-list', [AccountController::class, 'applicationList'])->name('applicationList.index');
+Route::post('/application-list/new-application', [AccountController::class, 'newApplication'])->name('applicationList.newApplication');
+Route::get('/application-list/create', [AccountController::class, 'applicationListCreate'])->name('applicationList.create');
 
 require __DIR__ . '/custom/auth.php';
 require __DIR__ . '/custom/admin.php';

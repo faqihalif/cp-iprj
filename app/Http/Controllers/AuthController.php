@@ -41,4 +41,9 @@ class AuthController extends Controller
 
         return redirect()->route('admin.dashboard.index');
     }
+
+    public function register()
+    {
+        return Inertia::render('auth/register');
+    }
 }
