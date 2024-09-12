@@ -83,7 +83,7 @@ const admin = props => {
                                 </Link> */}
                                 <Link href="/my-profile" className="flex">
                                     <Button className="bg-green-600">
-                                        My Profile
+                                        Login
                                     </Button>
                                 </Link>
                             </div>
@@ -121,7 +121,7 @@ const admin = props => {
                             {/* panel menu */}
                             <PopoverPanel as="div" anchor="bottom" className="w-full mt-8 bg-white rounded-b shadow">
                                 {({ close }) => (
-                                    <div className="container flex flex-col w-full pb-4 space-y-4">
+                                    <div className="container flex flex-col w-full pt-4 pb-4 space-y-4">
                                         <Link href="/" className="text-sm font-medium" onClick={() => close()}>Home</Link>
                                         <Link href="/programs" className="text-sm font-medium" onClick={() => close()}>Programs</Link>
                                         <Link href="/research-and-publication" className="text-sm font-medium" onClick={() => close()}>Research & Publication</Link>
@@ -136,7 +136,7 @@ const admin = props => {
                                         </Link>
                                         <Link href="/my-profile" className="flex">
                                             <Button className="bg-green-600">
-                                                My Profile
+                                                Login
                                             </Button>
                                         </Link>
                                     </div>
