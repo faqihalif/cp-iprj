@@ -215,12 +215,12 @@ function index() {
             <div className="container hidden md:block">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
-                        <div className="space-y-4">
+                        <div>
                             <div className="space-y-2">
                                 <p className="text-3xl font-semibold text-darkblueiprj">Facility</p>
                                 <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
                             </div>
-                            <p className="text-sm text-justify text-gray-700 md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
+                            <p className="mb-8 text-sm text-justify text-gray-700 md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
                             <Link className="flex">
                                 <Button className="bg-blue-600">
                                     Explore Facility
