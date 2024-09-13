@@ -11,19 +11,11 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
 
-// patter our programs
-import Banner1 from '@/images/home/banner.jpg'
-import DIOandGMEC from '@/images/home/dio&gmec_greeting.png'
-import SquareGold from '@/images/home/square_gold.png'
-import OurProgram from '@/images/home/our_program.jpg'
-import Dot from '@/images/home/dot.png'
-import Facility1 from '@/images/facility/facility1.jpg'
-import Facility2 from '@/images/facility/facility2.jpg'
-import Facility3 from '@/images/facility/facility3.jpg'
-import News1 from '@/images/news/news1.jpg'
-
 // shadcn/ui
 import { Button } from "@/components/ui/button"
+
+// lucide icons
+import { Dot } from 'lucide-react'
 
 function index() {
     const sliderBanner = {
@@ -37,6 +29,7 @@ function index() {
         autoplay: true,
         adaptiveHeight: true,
         autoplaySpeed: 5000,
+        dotsClass: "button__bar",
         appendDots: dots => (
             <div
                 style={{
@@ -44,7 +37,7 @@ function index() {
                     padding: "40px"
                 }}
             >
-                <ul style={{ margin: "0px" }}> {dots} </ul>
+                <ul>{dots}</ul>
             </div>
         ),
     }
@@ -60,6 +53,7 @@ function index() {
         autoplay: true,
         adaptiveHeight: true,
         autoplaySpeed: 3000,
+        dotsClass: "button__bar",
         appendDots: dots => (
             <div
                 style={{
@@ -67,7 +61,7 @@ function index() {
                     padding: "40px"
                 }}
             >
-                <ul style={{ margin: "0px" }}> {dots} </ul>
+                <ul>{dots}</ul>
             </div>
         ),
     }
@@ -80,7 +74,7 @@ function index() {
                     <div>
                         <div
                             className="md:h-[650px] h-[500px] bg-no-repeat bg-cover bg-center rounded-2xl"
-                            style={{ backgroundImage: `url(${Banner1})` }}
+                            style={{ backgroundImage: `url(../storage/images/banner.jpg)` }}
                         >
                             <div className="container flex h-full py-8 md:py-20">
                                 <div className="self-end max-w-screen-sm p-4 space-y-1 md:p-8 bg-black/40 rounded-2xl">
@@ -109,7 +103,7 @@ function index() {
                             </div>
                         </div>
                         <div>
-                            <img src={DIOandGMEC} alt="DIOandGMEC" className="px-10 mx-auto" />
+                            <img src="../storage/images/dio&gmec_greeting.png" alt="DIOandGMEC" className="px-10 mx-auto" />
                         </div>
                     </div>
                 </div>
@@ -123,8 +117,8 @@ function index() {
                     <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
                 </div>
                 <div className="relative flex order-last md:justify-end">
-                    <img src={OurProgram} alt="DIOandGMEC" className="w-full mx-auto rounded-2xl md:mx-0" />
-                    <img src={SquareGold} className="absolute bottom-0 left-0 -mb-20 -ml-8" style={{ zIndex: -1 }} />
+                    <img src="../storage/images/our_program.jpg" alt="DIOandGMEC" className="w-full mx-auto rounded-2xl md:mx-0" />
+                    <img src="../storage/images/square_gold.png" className="absolute bottom-0 left-0 -mb-20 -ml-8" style={{ zIndex: -1 }} />
                 </div>
                 <p className="mb-4 text-sm text-justify text-gray-700 md:text-base">JEC Eye Hospitals is recognized both nationally and internationally as one of the leading eye healthcare providers in Indonesia. We gratefully welcome applicants from in and outside the country.</p>
                 <Link className="flex">
@@ -140,8 +134,8 @@ function index() {
                 <div className="max-w-6xl mx-auto">
                     <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
                         <div className="relative flex">
-                            <img src={OurProgram} alt="DIOandGMEC" className="mx-auto rounded-2xl" />
-                            <img src={SquareGold} className="absolute bottom-0 left-0 w-full -mb-10 -ml-3" style={{ zIndex: -1 }} />
+                            <img src="../storage/images/our_program.jpg" alt="DIOandGMEC" className="mx-auto rounded-2xl" />
+                            <img src="../storage/images/square_gold.png" className="absolute bottom-0 left-0 w-full -mb-10 -ml-3" style={{ zIndex: -1 }} />
                         </div>
                         <div>
                             <div className="mb-4 space-y-2">
@@ -191,16 +185,16 @@ function index() {
                 <div className="relative">
                     <Slider {...sliderFacility}>
                         <div>
-                            <img src={Facility1} alt="image" className="rounded-xl" />
+                            <img src="../storage/images/facility/lasik_4.jpg" alt="image" className="rounded-xl" />
                         </div>
                         <div>
-                            <img src={Facility2} alt="image" className="rounded-xl" />
+                            <img src="../storage/images/facility/cdc.jpg" alt="image" className="rounded-xl" />
                         </div>
                         <div>
-                            <img src={Facility3} alt="image" className="rounded-xl" />
+                            <img src="../storage/images/facility/ot_room3.jpg" alt="image" className="rounded-xl" />
                         </div>
                     </Slider>
-                    <img src={Dot} className="absolute bottom-0 left-0 w-auto h-[600] -ml-60 -mb-10" style={{ zIndex: -1 }} />
+                    <img src="../storage/images/dot.png" className="absolute bottom-0 left-0 w-auto h-[600] -ml-60 -mb-10" style={{ zIndex: -1 }} />
                 </div>
                 <p className="mb-4 text-sm text-justify text-gray-700 md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
                 <Link className="flex">
@@ -215,7 +209,7 @@ function index() {
             <div className="container hidden md:block">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
-                        <div>
+                        <div className="space-y-4">
                             <div className="space-y-2">
                                 <p className="text-3xl font-semibold text-darkblueiprj">Facility</p>
                                 <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
@@ -230,16 +224,16 @@ function index() {
                         <div className="relative">
                             <Slider {...sliderFacility}>
                                 <div>
-                                    <img src={Facility1} alt="image" className="rounded-xl" />
+                                    <img src="../storage/images/facility/lasik_4.jpg" alt="image" className="rounded-xl" />
                                 </div>
                                 <div>
-                                    <img src={Facility2} alt="image" className="rounded-xl" />
+                                    <img src="../storage/images/facility/cdc.jpg" alt="image" className="rounded-xl" />
                                 </div>
                                 <div>
-                                    <img src={Facility3} alt="image" className="rounded-xl" />
+                                    <img src="../storage/images/facility/ot_room3.jpg" alt="image" className="rounded-xl" />
                                 </div>
                             </Slider>
-                            <img src={Dot} className="absolute bottom-0 left-0 w-auto h-[600] -ml-60 -mb-10" style={{ zIndex: -1 }} />
+                            <img src="../storage/images/dot.png" className="absolute bottom-0 left-0 w-auto h-[600] -ml-60 -mb-10" style={{ zIndex: -1 }} />
                         </div>
                     </div>
                 </div>
@@ -255,7 +249,7 @@ function index() {
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                     <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src={News1} alt="image" className="w-full rounded-2xl" />
+                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
                                 <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
                             </div>
@@ -266,7 +260,7 @@ function index() {
                     </Link>
                     <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src={News1} alt="image" className="w-full rounded-2xl" />
+                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
                                 <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
                             </div>
@@ -277,7 +271,7 @@ function index() {
                     </Link>
                     <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src={News1} alt="image" className="w-full rounded-2xl" />
+                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
                                 <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
                             </div>
@@ -288,7 +282,7 @@ function index() {
                     </Link>
                     <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src={News1} alt="image" className="w-full rounded-2xl" />
+                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
                                 <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
                             </div>

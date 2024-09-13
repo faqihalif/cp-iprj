@@ -12,10 +12,6 @@ import Loading from '@/components/ui/loading'
 // lucide icons
 import { Menu, X } from 'lucide-react'
 
-// logo
-import Logo from '@/images/logo-iprj.png'
-import LogoFooter from '@/images/logo-footer.png'
-
 // headless ui
 import { Popover, PopoverButton, PopoverPanel, PopoverBackdrop } from '@headlessui/react'
 
@@ -62,7 +58,7 @@ const admin = props => {
                             {/* logo */}
                             <div className="flex items-center">
                                 <Link href="/">
-                                    <img src={Logo} alt="IPRJ" className="w-auto h-16" />
+                                    <img src="../storage/images/logo-iprj.png" alt="IPRJ" className="w-auto h-16" />
                                 </Link>
                             </div>
                             {/* end logo */}
@@ -98,7 +94,7 @@ const admin = props => {
                             {/* logo */}
                             <div className="flex items-center">
                                 <Link href="/">
-                                    <img src={Logo} alt="IPRJ" className="w-auto h-16" />
+                                    <img src="../storage/images/logo-iprj.png" alt="IPRJ" className="w-auto h-16" />
                                 </Link>
                             </div>
                             {/* end logo */}
@@ -159,7 +155,7 @@ const admin = props => {
                         <div className="container py-10">
                             <div className="grid items-center grid-cols-1 gap-8 sm:grid-cols-2">
                                 <div className="flex flex-col space-y-2">
-                                    <img src={LogoFooter} alt="Logo IPRJ" className="w-32 mx-auto sm:mx-0" />
+                                    <img src="../storage/images/logo-footer.png" alt="Logo IPRJ" className="w-32 mx-auto sm:mx-0" />
                                     <div>
                                         <p className="text-sm font-semibold text-center text-white sm:text-left md:text-base">Institut Pendidikan & Riset JEC</p>
                                         <p className="text-sm text-center text-white sm:text-left md:text-base">Jl. Terusan Arjuna Utara No. 1</p>

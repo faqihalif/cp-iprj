@@ -12,8 +12,7 @@ import { ChevronRight, GraduationCap, MapPin, Calendar, Users } from 'lucide-rea
 // background pattern
 import BackgroundPattern from '@/images/background.png'
 
-// under construction
-import UnderConstruction from '@/images/under-construction.webp'
+
 
 function show(props) {
     return (
@@ -130,7 +129,7 @@ function show(props) {
                                         We are under construction right now, but we are working on something great just for you. Stay tuned, and thank you for your understanding as we make things even better.
                                     </p>
                                 </div>
-                                <img src={UnderConstruction} alt="Under Construction" className="mx-auto" />
+                                <img src="../storage/images/under-construction.webp" alt="Under Construction" className="mx-auto" />
                                 <div className="flex justify-center">
                                     <Link href="/" className="px-4 py-2 text-sm font-semibold text-white bg-green-600 rounded">
                                         Back to home
