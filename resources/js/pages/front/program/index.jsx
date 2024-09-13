@@ -14,7 +14,6 @@ import BackgroundPattern from '@/images/background.png'
 
 // graduation fellowship
 import GraduationFellowship from '@/images/programs.jpg'
-import Banner from '@/images/banner1.jpg'
 
 // headless ui
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
