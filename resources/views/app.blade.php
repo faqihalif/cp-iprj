@@ -9,6 +9,7 @@
         <meta http-equiv='expires' content='0'>
         <meta http-equiv='pragma' content='no-cache'>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+        <script>const global = globalThis;</script>
 
         <title>Institut Pendidikan & Riset JEC</title>
 

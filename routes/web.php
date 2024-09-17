@@ -42,7 +42,7 @@ Route::get('/about-us/educational-objective', [AboutUsController::class, 'educat
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
-Route::get('/my-profile', [AccountController::class, 'index'])->name('profile.index');
+Route::get('/my-profile', [AccountController::class, 'index'])->name('myProfile.index');
 Route::get('/application-list', [AccountController::class, 'applicationList'])->name('applicationList.index');
 Route::post('/application-list/new-application', [AccountController::class, 'newApplication'])->name('applicationList.newApplication');
 Route::get('/application-list/create', [AccountController::class, 'applicationListCreate'])->name('applicationList.create');

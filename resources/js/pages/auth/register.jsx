@@ -5,6 +5,7 @@ import Front from '@/layout/front/front'
 
 // inertia
 import { Link } from '@inertiajs/react'
+import { router } from '@inertiajs/react'
 
 // lucide icons
 import { ChevronRight, Eye } from 'lucide-react'
@@ -16,15 +17,11 @@ import BackgroundPattern from '@/images/background.png'
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useToast } from "@/components/ui/use-toast"
 
 // react hook form
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
-
-// axios
-import axios from "axios"
 
 // lucide icon
 import { Loader2 } from "lucide-react"
@@ -32,39 +29,31 @@ import { Loader2 } from "lucide-react"
 function register(props) {
     // state
     const [submitLoading, setSubmitLoading] = useState(false)
-
-    // toast
-    const { toast } = useToast()
-
+    
     // validation
     const validation = yup.object({
+        name: yup.string('Required!').required('Required!').nullable('Required!'),
         email: yup.string().email('Invalid email format').required('Required!').nullable('Required!'),
         password: yup.string('Required!').required('Required!').nullable('Required!'),
+        confirmationPassword: yup.string('Required!').required('Required!').nullable('Required!').oneOf([yup.ref("password")], "Passwords do not match"),
     }).required()
 
     // form
     const form = useForm({
         resolver: yupResolver(validation),
         defaultValues: {
+            name: '',
             email: '',
-            password: ''
+            password: '',
+            confirmationPassword: ''
         }
     })
 
     const onSubmit = (values) => {
-        setSubmitLoading(true)
-        axios.post(route('auth.login'), values).then(response => {
-            console.log(response.data)
-            setSubmitLoading(false)
-        }).catch(err => {
-            toast({
-                title: "Invalid Credentials",
-                description: err.response.data,
-                variant: 'destructive'
-            })
-            console.log(err.response.data)
-            setSubmitLoading(false)
-        })
+        router.post(
+            route('auth.register'),
+            values
+        )
     }
 
     return (
@@ -120,7 +109,7 @@ function register(props) {
                                     <FormItem>
                                         <FormLabel>Password</FormLabel>
                                         <FormControl>
-                                            <Input {...field} type="password" autoComplete='off' />
+                                            <Input {...field} type="password" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -128,12 +117,12 @@ function register(props) {
                             />
                             <FormField
                                 control={form.control}
-                                name="password_confirmation"
+                                name="confirmationPassword"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Password Confirmation</FormLabel>
                                         <FormControl>
-                                            <Input {...field} type="password" autoComplete='off' />
+                                            <Input {...field} type="password" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

@@ -16,7 +16,6 @@ import BackgroundPattern from '@/images/background.png'
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { useToast } from "@/components/ui/use-toast"
 
 // react hook form
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -32,9 +31,6 @@ import { Loader2 } from "lucide-react"
 function login(props) {
     // state
     const [submitLoading, setSubmitLoading] = useState(false)
-
-    // toast
-    const { toast } = useToast()
 
     // validation
     const validation = yup.object({
@@ -54,7 +50,11 @@ function login(props) {
     const onSubmit = (values) => {
         setSubmitLoading(true)
         axios.post(route('auth.login'), values).then(response => {
-            console.log(response.data)
+            toast({
+                title: "Account not found",
+                // description: err.response.data,
+                variant: 'destructive'
+            })
             setSubmitLoading(false)
         }).catch(err => {
             toast({
@@ -127,7 +127,7 @@ function login(props) {
                             </div>
                             <div className="flex flex-col items-center justify-between pt-4">
                                 <div>
-                                    <Link href={route('auth.register')} className="text-sm font-semibold text-blue-600">Doesn't have account? Register here</Link>
+                                    <Link href={route('auth.register.index')} className="text-sm font-semibold text-blue-600">Doesn't have account? Register here</Link>
                                 </div>
                                 <div>
                                     <Link className="text-sm font-semibold text-blue-600">Forgot password? Click here</Link>

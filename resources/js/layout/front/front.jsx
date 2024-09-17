@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 
 // inertia
 import { router } from '@inertiajs/react'
-import { usePage } from '@inertiajs/react'
 import { Link } from '@inertiajs/react'
 import { Head } from '@inertiajs/react'
+import { usePage } from '@inertiajs/react'
 
 // loading
 import Loading from '@/components/ui/loading'
@@ -17,9 +17,13 @@ import { Popover, PopoverButton, PopoverPanel, PopoverBackdrop } from '@headless
 
 // shadcn/ui
 import { Button } from "@/components/ui/button"
+import { Toaster } from "@/components/ui/toaster"
+import { useToast } from "@/components/ui/use-toast"
 
 const admin = props => {
     let { flash } = usePage().props
+    const { toast } = useToast()
+
     const [loading, setLoading] = useState(false)
     const [openMenu, setOpenMenu] = useState(false)
 
@@ -36,6 +40,12 @@ const admin = props => {
     // Finish Loading
     router.on('finish', () => {
         setLoading(false)
+        if (typeof flash.notification == 'object') {
+            toast({
+                title: "Scheduled: Catch up",
+                description: "Friday, February 10, 2023 at 5:57 PM",
+            })
+        }
     })
 
     useEffect(() => {
@@ -77,7 +87,7 @@ const admin = props => {
                                         Login/Register
                                     </Button>
                                 </Link> */}
-                                <Link href="/my-profile" className="flex">
+                                <Link href="/auth/login" className="flex">
                                     <Button className="bg-green-600">
                                         Login
                                     </Button>
@@ -130,7 +140,7 @@ const admin = props => {
                                                 Login/Register
                                             </Button>
                                         </Link>
-                                        <Link href="/my-profile" className="flex">
+                                        <Link href="/auth/login" className="flex">
                                             <Button className="bg-green-600">
                                                 Login
                                             </Button>
@@ -183,12 +193,14 @@ const admin = props => {
                     </div>
                     {/* end footer */}
                 </div>
+                <Toaster />
             </div>
 
             {/* Loading */}
             {
                 loading && <Loading />
             }
+            {/* end loading */}
         </React.Fragment>
     )
 }

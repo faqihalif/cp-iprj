@@ -11,7 +11,8 @@ Route::group([
     'as'            => 'auth.'
 ], function () {
     Route::get('/login', [AuthController::class, 'index'])->name('index');
-    Route::get('/register', [AuthController::class, 'register'])->name('register');
-    // Route::get('/register', [AuthController::class, 'index'])->name('index');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+    Route::get('/register', [AuthController::class, 'registerView'])->name('register.index');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
