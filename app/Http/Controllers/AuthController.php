@@ -35,7 +35,7 @@ class AuthController extends Controller
 
         if (!$auth) {
             return redirect()->back()->with('message', [
-                'type' => 'error',
+                'type' => 'Error',
                 'message' => 'Email or password is wrong'
             ]);
         }
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
         if (count($checkUser) > 0) {
             return redirect()->back()->with('message', [
-                'type' => 'error',
+                'type' => 'Error',
                 'message' => 'Email already registered'
             ]);
         } else {

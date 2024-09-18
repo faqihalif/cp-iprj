@@ -29,7 +29,7 @@ import { Loader2 } from "lucide-react"
 function register(props) {
     // state
     const [submitLoading, setSubmitLoading] = useState(false)
-    
+
     // validation
     const validation = yup.object({
         name: yup.string('Required!').required('Required!').nullable('Required!'),

@@ -23,6 +23,7 @@ import { useToast } from "@/components/ui/use-toast"
 const admin = props => {
     let { flash } = usePage().props
     const { toast } = useToast()
+    const [showNotification, setShowNotification] = useState(true)
 
     const [loading, setLoading] = useState(false)
     const [openMenu, setOpenMenu] = useState(false)
@@ -40,12 +41,6 @@ const admin = props => {
     // Finish Loading
     router.on('finish', () => {
         setLoading(false)
-        if (typeof flash.notification == 'object') {
-            toast({
-                title: "Scheduled: Catch up",
-                description: "Friday, February 10, 2023 at 5:57 PM",
-            })
-        }
     })
 
     useEffect(() => {
@@ -53,6 +48,16 @@ const admin = props => {
             setLoading(false)
         }
     }, [])
+
+    useEffect(() => {
+        if (flash.notification != null) {
+            toast({
+                title: flash.notification.type,
+                description: flash.notification.message,
+                variant: flash.notification.type == 'Error' ? 'destructive' : 'success'
+            })
+        }
+    }, [flash])
 
     return (
         <React.Fragment>
@@ -82,14 +87,9 @@ const admin = props => {
                                 <Link href="/facility" className="text-sm font-medium">Facility</Link>
                                 <Link href="/about-us" className="text-sm font-medium">About Us</Link>
                                 <Link href="/news" className="text-sm font-medium">News & Event</Link>
-                                {/* <Link href="/auth/login" className="flex">
-                                    <Button className="bg-green-600">
-                                        Login/Register
-                                    </Button>
-                                </Link> */}
                                 <Link href="/auth/login" className="flex">
                                     <Button className="bg-green-600">
-                                        Login
+                                        Login/Register
                                     </Button>
                                 </Link>
                             </div>
@@ -99,57 +99,54 @@ const admin = props => {
                     {/* end header desktop */}
 
                     {/* header mobile */}
-                    <div className="flex flex-col xl:hidden">
+                    <div className="relative flex flex-col xl:hidden">
                         <Popover as="div" className="container flex items-center justify-between py-3 mx-auto">
-                            {/* logo */}
-                            <div className="flex items-center">
-                                <Link href="/">
-                                    <img src="../storage/images/logo-iprj.png" alt="IPRJ" className="w-auto h-16" />
-                                </Link>
-                            </div>
-                            {/* end logo */}
-
-                            {/* button menu */}
-                            <div className="flex items-center">
-                                <PopoverButton className="w-6 h-6 text-darkblueiprj">
-                                    {
-                                        openMenu ? (
-                                            <X />
-                                        ) : (
-                                            <Menu />
-
-                                        )
-                                    }
-                                </PopoverButton>
-                            </div>
-                            {/* end button menu */}
-
-                            {/* panel menu */}
-                            <PopoverPanel as="div" anchor="bottom" className="w-full mt-8 bg-white rounded-b shadow">
-                                {({ close }) => (
-                                    <div className="container flex flex-col w-full pt-4 pb-4 space-y-4">
-                                        <Link href="/" className="text-sm font-medium" onClick={() => close()}>Home</Link>
-                                        <Link href="/programs" className="text-sm font-medium" onClick={() => close()}>Programs</Link>
-                                        <Link href="/research-and-publication" className="text-sm font-medium" onClick={() => close()}>Research & Publication</Link>
-                                        <Link href="/lecturer" className="text-sm font-medium" onClick={() => close()}>Lecturer</Link>
-                                        <Link href="/facility" className="text-sm font-medium" onClick={() => close()}>Facility</Link>
-                                        <Link href="/about-us" className="text-sm font-medium" onClick={() => close()}>About Us</Link>
-                                        <Link href="/news" className="text-sm font-medium" onClick={() => close()}>News & Event</Link>
-                                        <Link href="/auth/login" className="flex">
-                                            <Button className="bg-green-600">
-                                                Login/Register
-                                            </Button>
-                                        </Link>
-                                        <Link href="/auth/login" className="flex">
-                                            <Button className="bg-green-600">
-                                                Login
-                                            </Button>
+                            {({ open }) => (
+                                <>
+                                    {/* logo */}
+                                    <div className="flex items-center">
+                                        <Link href="/">
+                                            <img src="../storage/images/logo-iprj.png" alt="IPRJ" className="w-auto h-16" />
                                         </Link>
                                     </div>
-                                )}
-                            </PopoverPanel>
-                            <PopoverBackdrop className="fixed inset-0" />
-                            {/* end panel menu */}
+                                    {/* end logo */}
+
+                                    {/* button menu */}
+                                    <div className="flex items-center">
+                                        <PopoverButton className="w-6 h-6 text-darkblueiprj">
+                                            {
+                                                open ? (
+                                                    <X />
+                                                ) : (
+                                                    <Menu />
+                                                )
+                                            }
+                                        </PopoverButton>
+                                    </div>
+                                    {/* end button menu */}
+
+                                    {/* panel menu */}
+                                    <PopoverPanel as="div" anchor="bottom" className="w-full mt-8 bg-white rounded-b shadow">
+                                        {({ close }) => (
+                                            <div className="container flex flex-col w-full pt-4 pb-4 space-y-4">
+                                                <Link href="/" className="text-sm font-medium" onClick={() => close()}>Home</Link>
+                                                <Link href="/programs" className="text-sm font-medium" onClick={() => close()}>Programs</Link>
+                                                <Link href="/research-and-publication" className="text-sm font-medium" onClick={() => close()}>Research & Publication</Link>
+                                                <Link href="/lecturer" className="text-sm font-medium" onClick={() => close()}>Lecturer</Link>
+                                                <Link href="/facility" className="text-sm font-medium" onClick={() => close()}>Facility</Link>
+                                                <Link href="/about-us" className="text-sm font-medium" onClick={() => close()}>About Us</Link>
+                                                <Link href="/news" className="text-sm font-medium" onClick={() => close()}>News & Event</Link>
+                                                <Link href="/auth/login" className="flex">
+                                                    <Button className="bg-green-600" onClick={() => close()}>
+                                                        Login/Register
+                                                    </Button>
+                                                </Link>
+                                            </div>
+                                        )}
+                                    </PopoverPanel>
+                                    {/* end panel menu */}
+                                </>
+                            )}
                         </Popover>
                     </div>
                     {/* end header mobile */}
@@ -194,14 +191,14 @@ const admin = props => {
                     {/* end footer */}
                 </div>
                 <Toaster />
-            </div>
+            </div >
 
             {/* Loading */}
             {
                 loading && <Loading />
             }
             {/* end loading */}
-        </React.Fragment>
+        </React.Fragment >
     )
 }
 
