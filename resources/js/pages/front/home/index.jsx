@@ -74,7 +74,7 @@ function index() {
                     <div>
                         <div
                             className="md:h-[650px] h-[500px] bg-no-repeat bg-cover bg-center rounded-2xl"
-                            style={{ backgroundImage: `url(../storage/images/banner1.jpeg)` }}
+                            style={{ backgroundImage: `url(../storage/images/banner.jpg)` }}
                         >
                             <div className="container flex h-full py-8 md:py-20">
                                 <div className="self-end max-w-screen-sm p-4 space-y-1 md:p-8 bg-black/40 rounded-2xl">
