@@ -10,7 +10,6 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbP
 import { Link } from '@inertiajs/react'
 
 function index(props) {
-    console.log(props)
     return (
         <React.Fragment>
             {/* main */}

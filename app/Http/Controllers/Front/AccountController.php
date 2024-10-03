@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\ProgramApplication;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User\User;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -14,17 +17,62 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return Inertia::render('front/account/my-profile/index');
+        $user = User::where('email', Auth::user()->email)->first();
+
+        return Inertia::render('front/account/my-profile/index', [
+            'user' => $user
+        ]);
     }
 
-    public function updateProfileInformation()
+    public function updateProfileInformation(Request $request)
     {
+        $user = User::where('email', Auth::user()->email)->first();
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
 
+        return redirect()->back()->with('message', [
+            'type' => 'Success',
+            'message' => 'My Profile updated'
+        ]);
     }
 
-    public function changePassword()
+    public function changePassword(Request $request)
     {
+        $user = User::where('email', Auth::user()->email)->first();
+        
+        if (Hash::check($request->input('oldPassword'), $user->password)) {
+            $user->password = Hash::make($request->input('newPassword'));
+            $user->save();
+            
+            return redirect()->back()->with('message', [
+                'type' => 'Success',
+                'message' => 'Password changed'
+            ]);
+        } else {
+            return redirect()->back()->with('message', [
+                'type' => 'Error',
+                'message' => 'The old password you entered do not match, please try again'
+            ]);
+        }
+        
+        // return response()->json($request->all());
 
+        // $check = '';
+        // $oldPassword = $request->input('oldPassword'); 
+        // if (Hash::check($oldPassword, 'Pramukasari3')) {
+        //     $check = true;
+        // } else {
+        //     $check = false;
+        // }
+
+        // $data = [
+        //     'currentPassword' => Hash::make('Pramukasari3'),
+        //     'oldPassword' => $oldPassword,
+        //     'check' => $check
+        // ];
+
+        // return response()->json($data);
     }
 
     public function applicationList()
@@ -56,5 +104,13 @@ class AccountController extends Controller
                 'program' => $data
             ]);
         }
+    }
+
+    public function applicationListStore(Request $request)
+    {
+        return redirect()->route('applicationList.index')->with('message', [
+            'type' => 'Success',
+            'message' => 'Application submitted'
+        ]);
     }
 }

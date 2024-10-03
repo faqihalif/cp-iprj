@@ -24,7 +24,7 @@ import { useForm } from "react-hook-form"
 import * as yup from 'yup'
 
 // inertia
-import { Link } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
 
 // components
 import EducationalBackground from "./components/educational-background"
@@ -75,17 +75,25 @@ function create(props) {
     })
 
     const onSubmit = (values) => {
-        let data = {
-            fullname: values.fullname,
-            gender: values.gender,
-            date_of_birth: values.date_of_birth,
-            address: values.address,
-            email: values.email,
-            phone_number: values.phone_number,
-            educational_backgrounds: educationalBackgrounds,
-            work_experiences: workExperiences,
+        if (educationalBackgrounds.length == 0) {
+            alert('Please input your educational background')
+        } else {
+            let confirmation = confirm('Are you sure want to apply this program?')
+
+            if (confirmation) {
+                let data = {
+                    fullname: values.fullname,
+                    gender: values.gender,
+                    date_of_birth: values.date_of_birth,
+                    address: values.address,
+                    email: values.email,
+                    phone_number: values.phone_number,
+                    educational_backgrounds: educationalBackgrounds,
+                    work_experiences: workExperiences,
+                }
+                router.post(route('applicationList.store', data))
+            }
         }
-        console.log(data)
     }
 
     const handleEditEducationalBackground = value => {
@@ -125,8 +133,6 @@ function create(props) {
     useEffect(() => {
         setSelectedProgram(props.program)
     }, [])
-
-    console.log(props)
 
     return (
         <div>
@@ -323,6 +329,279 @@ function create(props) {
                             </CardContent>
                         </Card>
                         {/* end work experience */}
+
+                        {/* requirements */}
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Requirements</CardTitle>
+                            </CardHeader>
+                            <CardContent className="space-y-4">
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Apakah RS/ Klinik Sudah Memiliki Alat Laser PRP/ ARGON (Medical Retina)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <RadioGroup
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value}
+                                                    className="flex items-center space-x-4"
+                                                >
+                                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                                        <FormControl>
+                                                            <RadioGroupItem value="ya" />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            Ya
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                                        <FormControl>
+                                                            <RadioGroupItem value="tidak" />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            Tidak
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                </RadioGroup>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Apakah RS/ Klinik Sudah Memiliki Alat OCT (Medical Retina)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <RadioGroup
+                                                    onValueChange={field.onChange}
+                                                    defaultValue={field.value}
+                                                    className="flex items-center space-x-4"
+                                                >
+                                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                                        <FormControl>
+                                                            <RadioGroupItem value="ya" />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            Ya
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                                        <FormControl>
+                                                            <RadioGroupItem value="tidak" />
+                                                        </FormControl>
+                                                        <FormLabel className="font-normal">
+                                                            Tidak
+                                                        </FormLabel>
+                                                    </FormItem>
+                                                </RadioGroup>
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Rencana Daerah Praktek Setelah Fellowship Retina (Kota/Kabupaten/Propinsi)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Surat Keterangan Dari Atasan Sudah Berapa Lama Bekerja Dan Menyetujui Mengambil Fellowship Retina (Medical Dan/Atau Surgical)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Surat Keterangan Ketersediaan ada tidak nya alat laser & OCT (medical) / vitrektomi (surgical)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Surat lamaran ke Direktur Pengembangan dan Pendidikan</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Curriculum Vitae</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Kartu Keluarga (KK) dan Kartu Tanda Penduduk (KTP)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">KTA IDI</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">NPWP</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Ijazah Dokter Umum dan Spesialis</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Surat Tanda Registrasi (STR)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Surat Izin Praktek (SIP)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Pas Photo (Formal)</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Sertifikat Kompetensi Dari Kolegium</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Logbook Jumlah Operasi Yang Sudah Dilakukan</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="test"
+                                    render={({ field }) => (
+                                        <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
+                                            <FormLabel className="col-span-5">Untuk PNS : Foto Copy SK Terakhir Dan Surat Keterangan Dari Atasan Langsung</FormLabel>
+                                            <FormControl className="col-span-2">
+                                                <Input type="file" />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </CardContent>
+                        </Card>
+                        {/* end requirements */}
 
                         <div className="flex justify-end">
                             {

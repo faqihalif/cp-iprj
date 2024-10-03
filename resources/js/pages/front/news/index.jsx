@@ -12,7 +12,7 @@ import { ChevronRight, Eye } from 'lucide-react'
 // background pattern
 import BackgroundPattern from '@/images/background.png'
 
-// under construction
+// news
 import News1 from '@/images/news/news1.jpg'
 import News2 from '@/images/news/news2.jpg'
 import News3 from '@/images/news/news3.jpg'

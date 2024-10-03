@@ -18,29 +18,29 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $checkUser = User::where('email', $request->input('email'))->first();
-        return response()->json($checkUser);
+        $checkUser = User::where('email', $request->input('email'))->get();
 
         if (count($checkUser) == 0) {
             return redirect()->back()->with('message', [
-                'type' => 'error',
-                'message' => 'Email not registered'
-            ]);
-        }
-
-        $auth = Auth::attempt([
-            'email' => $request->input('email'),
-            'password' => $request->input('password')
-        ]);
-
-        if (!$auth) {
-            return redirect()->back()->with('message', [
                 'type' => 'Error',
-                'message' => 'Email or password is wrong'
+                'message' => 'Account not found'
             ]);
+        } else {
+            $auth = Auth::attempt([
+                'email' => $request->input('email'),
+                'password' => $request->input('password')
+            ]);
+    
+            if (!$auth) {
+                return redirect()->back()->with('message', [
+                    'type' => 'Error',
+                    'message' => 'Email or password is wrong'
+                ]);
+            } else {
+                return redirect()->route('myProfile.index');
+            }
         }
 
-        return redirect()->route('myProfile.index');
     }
 
     public function registerView()
@@ -72,7 +72,17 @@ class AuthController extends Controller
             ]);
 
             // redirect to my profile
-            return redirect()->route('myProfile.index');
+            return redirect()->route('myProfile.index')->with('message', [
+                'type' => 'Success',
+                'message' => 'Account has successfully created'
+            ]);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        return redirect()->route('auth.index');
     }
 }

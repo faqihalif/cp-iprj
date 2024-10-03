@@ -72,7 +72,7 @@ function index(props) {
             )
         }
     ]
-    
+
     return (
         <div>
             <div className="flex items-center justify-between pb-4">
@@ -102,7 +102,15 @@ function index(props) {
                             <TableCell>Glaucoma Management</TableCell>
                             <TableCell>2024-09-10</TableCell>
                             <TableCell><Badge className="bg-blue-600">On Review</Badge></TableCell>
-                            <TableCell className="text-right">$250.00</TableCell>
+                            <TableCell className="text-right">
+                                <a
+                                    href="#"
+                                    className="flex items-center justify-center p-1 text-green-600"
+                                    target="_blank"
+                                >
+                                    <PanelLeftOpen className="w-5 h-5" />
+                                </a>
+                            </TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

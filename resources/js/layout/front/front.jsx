@@ -10,18 +10,21 @@ import { usePage } from '@inertiajs/react'
 import Loading from '@/components/ui/loading'
 
 // lucide icons
-import { Menu, X } from 'lucide-react'
+import { Menu as MenuIcon, X } from 'lucide-react'
 
 // headless ui
-import { Popover, PopoverButton, PopoverPanel, PopoverBackdrop } from '@headlessui/react'
+import { Popover, PopoverButton, PopoverPanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 
 // shadcn/ui
 import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
 
+// components
+import UserNav from "./user-nav"
+
 const admin = props => {
-    let { flash } = usePage().props
+    let { flash, user } = usePage().props
     const { toast } = useToast()
     const [showNotification, setShowNotification] = useState(true)
 
@@ -87,11 +90,17 @@ const admin = props => {
                                 <Link href="/facility" className="text-sm font-medium">Facility</Link>
                                 <Link href="/about-us" className="text-sm font-medium">About Us</Link>
                                 <Link href="/news" className="text-sm font-medium">News & Event</Link>
-                                <Link href="/auth/login" className="flex">
-                                    <Button className="bg-green-600">
-                                        Login/Register
-                                    </Button>
-                                </Link>
+                                {
+                                    user == null ? (
+                                        <Link href="/auth/login" className="flex">
+                                            <Button className="bg-green-600">
+                                                Login/Register
+                                            </Button>
+                                        </Link>
+                                    ) : (
+                                        <UserNav user={user} />
+                                    )
+                                }
                             </div>
                             {/* end menu */}
                         </div>
@@ -118,7 +127,7 @@ const admin = props => {
                                                 open ? (
                                                     <X />
                                                 ) : (
-                                                    <Menu />
+                                                    <MenuIcon />
                                                 )
                                             }
                                         </PopoverButton>
@@ -136,11 +145,17 @@ const admin = props => {
                                                 <Link href="/facility" className="text-sm font-medium" onClick={() => close()}>Facility</Link>
                                                 <Link href="/about-us" className="text-sm font-medium" onClick={() => close()}>About Us</Link>
                                                 <Link href="/news" className="text-sm font-medium" onClick={() => close()}>News & Event</Link>
-                                                <Link href="/auth/login" className="flex">
-                                                    <Button className="bg-green-600" onClick={() => close()}>
-                                                        Login/Register
-                                                    </Button>
-                                                </Link>
+                                                {
+                                                    user == null ? (
+                                                        <Link href="/auth/login" className="flex">
+                                                            <Button className="bg-green-600">
+                                                                Login/Register
+                                                            </Button>
+                                                        </Link>
+                                                    ) : (
+                                                        <UserNav user={user} />
+                                                    )
+                                                }
                                             </div>
                                         )}
                                     </PopoverPanel>

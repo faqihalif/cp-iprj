@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // front
 import Front from '@/layout/front/front'
@@ -15,46 +15,64 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
 
-function index(props) {
-    // state
-    const [submitLoading, setSubmitLoading] = useState(false)
+// inertia
+import { router } from '@inertiajs/react'
 
+function index(props) {
     // toast
     const { toast } = useToast()
 
-    // validation
-    const validation = yup.object({
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+    // validation my profile
+    const validationMyProfile = yup.object({
+        name: yup.string('Required!').required('Required!').nullable('Required!'),
         email: yup.string().email('Invalid email format').required('Required!').nullable('Required!'),
-        password: yup.string('Required!').required('Required!').nullable('Required!'),
     }).required()
 
-    // form
-    const form = useForm({
-        resolver: yupResolver(validation),
+    // form my profile
+    const formMyProfile = useForm({
+        resolver: yupResolver(validationMyProfile),
         defaultValues: {
-            email: '',
-            password: ''
+            name: '',
+            email: ''
         }
     })
 
-    function onSubmit(values) {
-        setSubmitLoading(true)
-        axios.post(route('auth.login'), values).then(response => {
-            console.log(response.data)
-            setSubmitLoading(false)
-        }).catch(err => {
-            toast({
-                title: "Invalid Credentials",
-                description: err.response.data,
-                variant: 'destructive'
-            })
-            console.log(err.response.data)
-            setSubmitLoading(false)
-        })
+    // submit my profile
+    function onSubmitMyProfile(values) {
+        router.put(route('myProfile.updateProfileInformation'), values)
     }
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+    // validation change password
+    const validationChangePassword = yup.object({
+        oldPassword: yup.string('Required!').required('Required!').nullable('Required!'),
+        newPassword: yup.string('Required!').required('Required!').nullable('Required!')
+    }).required()
+
+    // form change password
+    const formChangePassword = useForm({
+        resolver: yupResolver(validationChangePassword),
+        defaultValues: {
+            oldPassword: '',
+            newPassword: ''
+        }
+    })
+
+    // submit change password
+    function onSubmitChangePassword(values) {
+        router.put(route('myProfile.changePassword'), values)
+    }
+    // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+
+    useEffect(() => {
+        formMyProfile.setValue('name', props.user.name)
+        formMyProfile.setValue('email', props.user.email)
+    }, [])
 
     return (
-        <>
+        <div className="space-y-10">
             {/* account information */}
             <div>
                 <div className="flex items-center justify-between pb-1 lg:pb-4">
@@ -63,11 +81,11 @@ function index(props) {
                     </div>
                 </div>
                 <div className="w-full max-w-md">
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <Form key={1} {...formMyProfile}>
+                        <form onSubmit={formMyProfile.handleSubmit(onSubmitMyProfile)} className="space-y-4">
                             <FormField
-                                control={form.control}
-                                name="fullname"
+                                control={formMyProfile.control}
+                                name="name"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Fullname</FormLabel>
@@ -79,7 +97,7 @@ function index(props) {
                                 )}
                             />
                             <FormField
-                                control={form.control}
+                                control={formMyProfile.control}
                                 name="email"
                                 render={({ field }) => (
                                     <FormItem>
@@ -92,16 +110,7 @@ function index(props) {
                                 )}
                             />
                             <div className="flex justify-end">
-                                {
-                                    submitLoading == true ? (
-                                        <Button disabled>
-                                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                            Please wait
-                                        </Button>
-                                    ) : (
-                                        <Button type="submit">Update</Button>
-                                    )
-                                }
+                                <Button type="submit">Update</Button>
                             </div>
                         </form>
                     </Form>
@@ -113,11 +122,11 @@ function index(props) {
             <div>
                 <p className="pb-4 text-xl font-semibold text-gray-700">Change Password</p>
                 <div className="w-full max-w-md">
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <Form key={2} {...formChangePassword}>
+                        <form onSubmit={formChangePassword.handleSubmit(onSubmitChangePassword)} className="space-y-4">
                             <FormField
-                                control={form.control}
-                                name="fullname"
+                                control={formChangePassword.control}
+                                name="oldPassword"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Old Password</FormLabel>
@@ -129,8 +138,8 @@ function index(props) {
                                 )}
                             />
                             <FormField
-                                control={form.control}
-                                name="email"
+                                control={formChangePassword.control}
+                                name="newPassword"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>New Password</FormLabel>
@@ -142,23 +151,14 @@ function index(props) {
                                 )}
                             />
                             <div className="flex justify-end">
-                                {
-                                    submitLoading == true ? (
-                                        <Button disabled>
-                                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                            Please wait
-                                        </Button>
-                                    ) : (
-                                        <Button type="submit">Change Password</Button>
-                                    )
-                                }
+                                <Button type="submit">Change Password</Button>
                             </div>
                         </form>
                     </Form>
                 </div>
             </div>
             {/* end change password */}
-        </>
+        </div>
     )
 }
 

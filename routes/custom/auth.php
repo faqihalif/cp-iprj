@@ -15,4 +15,6 @@ Route::group([
 
     Route::get('/register', [AuthController::class, 'registerView'])->name('register.index');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

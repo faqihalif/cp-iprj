@@ -5,6 +5,7 @@ import Front from '@/layout/front/front'
 
 // inertia
 import { Link } from '@inertiajs/react'
+import { router } from '@inertiajs/react'
 
 // lucide icons
 import { ChevronRight, Eye } from 'lucide-react'
@@ -48,23 +49,10 @@ function login(props) {
     })
 
     const onSubmit = (values) => {
-        setSubmitLoading(true)
-        axios.post(route('auth.login'), values).then(response => {
-            toast({
-                title: "Account not found",
-                // description: err.response.data,
-                variant: 'destructive'
-            })
-            setSubmitLoading(false)
-        }).catch(err => {
-            toast({
-                title: "Invalid Credentials",
-                description: err.response.data,
-                variant: 'destructive'
-            })
-            console.log(err.response.data)
-            setSubmitLoading(false)
-        })
+        router.post(
+            route('auth.login'),
+            values
+        )
     }
 
     return (

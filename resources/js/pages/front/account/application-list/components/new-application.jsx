@@ -7,7 +7,7 @@ import { router } from '@inertiajs/react'
 import DialogScroll from "@/components/ui/dialog-scroll"
 import { Button } from "@/components/ui/button"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Badge } from "@/components/ui/badge"
@@ -66,7 +66,11 @@ function newApplication(props) {
                     <Card className="flex flex-col overflow-auto">
                         <CardHeader>
                             <div className="flex items-center justify-between">
-                                <CardTitle>New Application</CardTitle>
+                                <div className="space-y-1.5">
+                                    <CardTitle>New Application</CardTitle>
+                                    <CardDescription>Please select just 1 program.</CardDescription>
+                                </div>
+
                                 <button className="flex" type="button" onClick={() => setShow(false)}>
                                     <X className="w-4 h-4"></X>
                                 </button>
@@ -82,7 +86,7 @@ function newApplication(props) {
                                         name="program"
                                         render={() => (
                                             <FormItem>
-                                                <div className="grid grid-cols-1 gap-2 pb-2 space-y-0 border-b-2 md:grid-cols-2 xl:grid-cols-3">
+                                                <div className="grid grid-cols-1 gap-2 pb-2 space-y-0 md:grid-cols-2 xl:grid-cols-3">
                                                     {props.programApplication.map((v) => (
                                                         v.category == "Fellowship" && <FormField
                                                             key={v.id}
@@ -168,7 +172,7 @@ function newApplication(props) {
                                         name="program"
                                         render={() => (
                                             <FormItem>
-                                                <div className="grid grid-cols-1 gap-2 pb-2 space-y-0 border-b-2 md:grid-cols-2 xl:grid-cols-3">
+                                                <div className="grid grid-cols-1 gap-2 pb-2 space-y-0 md:grid-cols-2 xl:grid-cols-3">
                                                     {props.programApplication.map((v) => (
                                                         v.category == "Observership" && <FormField
                                                             key={v.id}
@@ -254,7 +258,7 @@ function newApplication(props) {
                                         name="program"
                                         render={() => (
                                             <FormItem>
-                                                <div className="grid grid-cols-1 gap-2 pb-2 space-y-0 border-b-2 md:grid-cols-2 xl:grid-cols-3">
+                                                <div className="grid grid-cols-1 gap-2 pb-2 space-y-0 md:grid-cols-2 xl:grid-cols-3">
                                                     {props.programApplication.map((v) => (
                                                         v.category == "Residency" && <FormField
                                                             key={v.id}
@@ -336,7 +340,8 @@ function newApplication(props) {
                                 </div>
                             </div>
                         </CardContent>
-                        <CardFooter className="flex justify-end pt-6">
+                        <CardFooter className="flex justify-between pt-6">
+                            <Button type="button" variant="secondary" onClick={() => setShow(false)}>Close</Button>
                             <Button type="submit">Submit</Button>
                         </CardFooter>
                     </Card>
