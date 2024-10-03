@@ -258,7 +258,7 @@ function index() {
                             <p className="text-sm font-medium text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
                         </div>
                     </Link>
-                    <Link className="flex flex-col gap-4" href="/under-construction">
+                    {/* <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
                             <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
@@ -290,7 +290,7 @@ function index() {
                         <div>
                             <p className="text-sm font-medium text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
                         </div>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
             {/* end news & event */}
