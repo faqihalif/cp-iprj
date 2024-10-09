@@ -51,5 +51,10 @@ Route::post('/application-list/new-application', [AccountController::class, 'new
 Route::get('/application-list/create', [AccountController::class, 'applicationListCreate'])->name('applicationList.create');
 Route::post('/application-list', [AccountController::class, 'applicationListStore'])->name('applicationList.store');
 
+Route::get('/test', function () {
+    return view('mail.review-application-list');
+});
+
+
 require __DIR__ . '/custom/auth.php';
 require __DIR__ . '/custom/admin.php';

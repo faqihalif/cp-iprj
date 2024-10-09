@@ -22,56 +22,7 @@ import NewApplication from './components/new-application'
 function index(props) {
     const [showNewApplication, setShowNewApplication] = useState(false)
 
-    // Define Column Participants
-    const columns = [
-        {
-            Header: () => "Program",
-            accessor: 'program',
-        },
-        {
-            Header: () => "Subspecialties",
-            accessor: 'subspecialties',
-        },
-        {
-            Header: () => "Submit Date",
-            accessor: 'submit_date',
-        },
-        {
-            Header: () => "Status",
-            accessor: 'status',
-            Cell: ({ row }) => (
-                row.original.status == 'waiting' ? (
-                    <Badge className="bg-yellow-600">Waiting</Badge>
-                ) : (
-                    <span className="badge-waiting">Waiting</span>
-                )
-            )
-        },
-        {
-            Header: () => "",
-            accessor: 'link',
-            disableSortBy: true,
-            showFilter: false,
-            Cell: ({ value }) => (
-                <div className="flex items-center justify-center space-x-2">
-                    {/* Show */}
-                    {
-                        value == "" ? (
-                            null
-                        ) : (
-                            <a
-                                href={value}
-                                className="flex items-center justify-center p-1 text-green-600"
-                                target="_blank"
-                            >
-                                <PanelLeftOpen className="w-5 h-5" />
-                            </a>
-                        )
-                    }
-                </div>
-            )
-        }
-    ]
+    console.log(props)
 
     return (
         <div>
@@ -97,21 +48,33 @@ function index(props) {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <TableRow>
-                            <TableCell>Fellowship</TableCell>
-                            <TableCell>Glaucoma Management</TableCell>
-                            <TableCell>2024-09-10</TableCell>
-                            <TableCell><Badge className="bg-blue-600">On Review</Badge></TableCell>
-                            <TableCell className="text-right">
-                                <a
-                                    href="#"
-                                    className="flex items-center justify-center p-1 text-green-600"
-                                    target="_blank"
-                                >
-                                    <PanelLeftOpen className="w-5 h-5" />
-                                </a>
-                            </TableCell>
-                        </TableRow>
+                        {
+                            props.application_list.map((v, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{v.selected_program[0].category}</TableCell>
+                                    <TableCell>{v.selected_program[0].name}</TableCell>
+                                    <TableCell>{v.created_at}</TableCell>
+                                    <TableCell>
+                                        {
+                                            v.status == 'Waiting' ? (
+                                                <Badge className="bg-blue-600">On Review</Badge>
+                                            ) : (
+                                                null
+                                            )
+                                        }
+                                    </TableCell>
+                                    <TableCell className="text-right">
+                                        <a
+                                            href="#"
+                                            className="flex items-center justify-center p-1 text-green-600"
+                                            target="_blank"
+                                        >
+                                            <PanelLeftOpen className="w-5 h-5" />
+                                        </a>
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                        }
                     </TableBody>
                 </Table>
             </div>

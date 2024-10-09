@@ -97,7 +97,7 @@ function newApplication(props) {
                                                                     v.status == 'open' ? (
                                                                         <FormItem
                                                                             key={v.id}
-                                                                            className="p-2 space-y-0 border border-gray-300 rounded-lg"
+                                                                            className="p-2 space-y-2 border border-gray-300 rounded-lg"
                                                                         >
                                                                             <div className="flex justify-between space-x-4">
                                                                                 <FormLabel className="truncate cursor-pointer">
@@ -119,9 +119,14 @@ function newApplication(props) {
                                                                                     />
                                                                                 </FormControl>
                                                                             </div>
-                                                                            <div className="flex items-center justify-end space-x-2">
-                                                                                <Badge className="bg-blue-600">{v.duration}</Badge>
-                                                                                <Badge className="bg-green-600">Active</Badge>
+                                                                            <div className="flex items-center justify-between space-x-2">
+                                                                                <div className="self-end">
+                                                                                    <p className="text-xs text-gray-500">12 Applicants</p>
+                                                                                </div>
+                                                                                <div className="flex items-center space-x-1">
+                                                                                    <Badge className="bg-blue-600">{v.duration}</Badge>
+                                                                                    <Badge className="bg-green-600">Active</Badge>
+                                                                                </div>
                                                                             </div>
                                                                         </FormItem>
                                                                     ) : (

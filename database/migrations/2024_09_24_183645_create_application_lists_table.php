@@ -13,6 +13,18 @@ return new class extends Migration
     {
         Schema::create('application_lists', function (Blueprint $table) {
             $table->id();
+            $table->json('selected_program')->nullable();
+            $table->string('fullname')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('date_of_birth')->nullable();
+            $table->text('address')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->json('educational_background')->nullable();
+            $table->json('work_experience')->nullable();
+            $table->json('requirements')->nullable();
+            $table->string('status')->nullable();
+            $table->text('reason')->nullable();
             $table->timestamps();
         });
     }

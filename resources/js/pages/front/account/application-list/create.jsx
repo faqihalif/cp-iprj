@@ -75,25 +75,26 @@ function create(props) {
     })
 
     const onSubmit = (values) => {
-        if (educationalBackgrounds.length == 0) {
-            alert('Please input your educational background')
-        } else {
-            let confirmation = confirm('Are you sure want to apply this program?')
+        // if (educationalBackgrounds.length == 0) {
+        //     alert('Please input your educational background')
+        // } else {
+        let confirmation = confirm('Are you sure want to apply this program?')
 
-            if (confirmation) {
-                let data = {
-                    fullname: values.fullname,
-                    gender: values.gender,
-                    date_of_birth: values.date_of_birth,
-                    address: values.address,
-                    email: values.email,
-                    phone_number: values.phone_number,
-                    educational_backgrounds: educationalBackgrounds,
-                    work_experiences: workExperiences,
-                }
-                router.post(route('applicationList.store', data))
+        if (confirmation) {
+            let data = {
+                selected_program: selectedProgram,
+                fullname: values.fullname,
+                gender: values.gender,
+                date_of_birth: values.date_of_birth,
+                address: values.address,
+                email: values.email,
+                phone_number: values.phone_number,
+                educational_backgrounds: educationalBackgrounds,
+                work_experiences: workExperiences,
             }
+            router.post(route('applicationList.store', data))
         }
+        // }
     }
 
     const handleEditEducationalBackground = value => {
@@ -341,7 +342,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Apakah RS/ Klinik Sudah Memiliki Alat Laser PRP/ ARGON (Medical Retina)</FormLabel>
+                                            <FormLabel className="col-span-5">Does the hospital/clinic have laser PRP/ARGON (medical retina) equipment?</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <RadioGroup
                                                     onValueChange={field.onChange}
@@ -375,7 +376,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Apakah RS/ Klinik Sudah Memiliki Alat OCT (Medical Retina)</FormLabel>
+                                            <FormLabel className="col-span-5">Does the hospital/clinic have OCT equipment (Medical Retina)?</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <RadioGroup
                                                     onValueChange={field.onChange}
@@ -409,7 +410,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Rencana Daerah Praktek Setelah Fellowship Retina (Kota/Kabupaten/Propinsi)</FormLabel>
+                                            <FormLabel className="col-span-5">Practice Area Plan after Retina Fellowship (City / Regency / Province)</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input {...field} />
                                             </FormControl>
@@ -422,7 +423,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Surat Keterangan Dari Atasan Sudah Berapa Lama Bekerja Dan Menyetujui Mengambil Fellowship Retina (Medical Dan/Atau Surgical)</FormLabel>
+                                            <FormLabel className="col-span-5">Certificate from employer how long you have worked and agree to take Retina Fellowship (Medical and / or Surgical)</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -435,7 +436,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Surat Keterangan Ketersediaan ada tidak nya alat laser & OCT (medical) / vitrektomi (surgical)</FormLabel>
+                                            <FormLabel className="col-span-5">Certificate of Availability of laser & OCT equipment (medical) / vitrectomy (surgical)</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -448,7 +449,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Surat lamaran ke Direktur Pengembangan dan Pendidikan</FormLabel>
+                                            <FormLabel className="col-span-5">Application letter to Director of Development and Education</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -474,7 +475,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Kartu Keluarga (KK) dan Kartu Tanda Penduduk (KTP)</FormLabel>
+                                            <FormLabel className="col-span-5">Family Card (KK) and Identity Card (KTP)</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -487,7 +488,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">KTA IDI</FormLabel>
+                                            <FormLabel className="col-span-5">IDI KTA</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -513,7 +514,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Ijazah Dokter Umum dan Spesialis</FormLabel>
+                                            <FormLabel className="col-span-5">General practitioner and specialist diplomas</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -526,7 +527,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Surat Tanda Registrasi (STR)</FormLabel>
+                                            <FormLabel className="col-span-5">Registration Certificate (STR)</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -539,7 +540,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Surat Izin Praktek (SIP)</FormLabel>
+                                            <FormLabel className="col-span-5">Practice License (SIP)</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -552,7 +553,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Pas Photo (Formal)</FormLabel>
+                                            <FormLabel className="col-span-5">Photo Pass (Formal)</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -565,7 +566,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Sertifikat Kompetensi Dari Kolegium</FormLabel>
+                                            <FormLabel className="col-span-5">Certificate of Competence from Collegium</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -578,7 +579,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Logbook Jumlah Operasi Yang Sudah Dilakukan</FormLabel>
+                                            <FormLabel className="col-span-5">Logbook of the number of operations performed</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>
@@ -591,7 +592,7 @@ function create(props) {
                                     name="test"
                                     render={({ field }) => (
                                         <FormItem className="grid items-center grid-cols-1 gap-1 md:grid-cols-7">
-                                            <FormLabel className="col-span-5">Untuk PNS : Foto Copy SK Terakhir Dan Surat Keterangan Dari Atasan Langsung</FormLabel>
+                                            <FormLabel className="col-span-5">For civil servants: Photo Copy of Last Decree and Certificate from Direct Supervisor</FormLabel>
                                             <FormControl className="col-span-2">
                                                 <Input type="file" />
                                             </FormControl>

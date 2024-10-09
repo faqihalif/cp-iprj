@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
         <script>const global = globalThis;</script>
 
-        <title>Institut Pendidikan & Riset JEC</title>
+        <title>JEC Institute for Research & Education</title>
 
         {{-- vite configuration --}}
         @viteReactRefresh

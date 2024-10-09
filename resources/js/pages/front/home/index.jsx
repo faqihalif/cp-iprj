@@ -121,7 +121,7 @@ function index() {
                     <img src="../storage/images/square_gold.png" className="absolute bottom-0 left-0 -mb-20 -ml-8" style={{ zIndex: -1 }} />
                 </div>
                 <p className="mb-4 text-sm text-justify text-gray-700 md:text-base">JEC Eye Hospitals is recognized both nationally and internationally as one of the leading eye healthcare providers in Indonesia. We gratefully welcome applicants from in and outside the country.</p>
-                <Link className="flex">
+                <Link className="flex" href="/programs">
                     <Button className="bg-blue-600">
                         All Programs
                     </Button>
@@ -143,7 +143,7 @@ function index() {
                                 <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
                             </div>
                             <p className="mb-8 text-sm text-justify text-gray-700 md:text-base">JEC Eye Hospitals is recognized both nationally and internationally as one of the leading eye healthcare providers in Indonesia. We gratefully welcome applicants from in and outside the country.</p>
-                            <Link className="flex">
+                            <Link className="flex" href="/programs">
                                 <Button className="bg-blue-600">
                                     All Programs
                                 </Button>
@@ -166,7 +166,7 @@ function index() {
                     </div>
                     <div className="p-10 bg-white">
                         <p className="mb-2 text-5xl font-semibold text-center text-goldiprj">60+</p>
-                        <p className="text-xs font-semibold text-center text-gray-700">Clinical Practice</p>
+                        <p className="text-xs font-semibold text-center text-gray-700">Physicians Faculty</p>
                     </div>
                     <div className="p-10 bg-darkblueiprj rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
                         <p className="mb-2 text-5xl font-semibold text-center text-goldiprj">250+</p>
@@ -197,7 +197,7 @@ function index() {
                     <img src="../storage/images/dot.png" className="absolute bottom-0 left-0 w-auto h-[600] -ml-60 -mb-10" style={{ zIndex: -1 }} />
                 </div>
                 <p className="mb-4 text-sm text-justify text-gray-700 md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
-                <Link className="flex">
+                <Link className="flex" href="/facility">
                     <Button className="bg-blue-600">
                         Explore Facility
                     </Button>
@@ -215,7 +215,7 @@ function index() {
                                 <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
                             </div>
                             <p className="mb-8 text-sm text-justify text-gray-700 md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
-                            <Link className="flex">
+                            <Link className="flex" href="/facility">
                                 <Button className="bg-blue-600">
                                     Explore Facility
                                 </Button>
