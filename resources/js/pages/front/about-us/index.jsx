@@ -22,9 +22,9 @@ function index(props) {
         <div
             style={{ backgroundImage: `url(${BackgroundPattern})`, backgroundSize: "100%", backgroundRepeat: 'no-repeat' }}
         >
-            <div className="container py-4 space-y-8">
+            <div className="container py-4 space-y-4">
                 {/* title */}
-                <div className="space-y-8">
+                <div className="space-y-4">
                     <div className="flex items-center space-x-1">
                         <Link href="/" className="text-xs">Home</Link>
                         <ChevronRight className="w-4 h-4 text-gray-700" />
@@ -38,7 +38,7 @@ function index(props) {
                 {/* content */}
                 <div>
                     <TabGroup className="w-full space-y-4">
-                        <TabList className="flex flex-col w-full pb-4 space-y-2 border-b-2 md:flex-row md:space-x-8 md:space-y-0">
+                        <TabList className="flex flex-col w-full pb-2 space-y-2 border-b-2 md:flex-row md:space-x-8 md:space-y-0">
                             <Tab as="div" className="flex items-center justify-center">
                                 <Link href={route('aboutUs.index')} className={`text-center rounded-t pb-1 text-sm font-semibold text-gray-700 focus:outline-none ` + (component.startsWith('front/about-us/about') && "border-b-2 border-goldiprj")}>
                                     About

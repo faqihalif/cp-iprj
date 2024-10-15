@@ -16,5 +16,11 @@ Route::group([
     Route::get('/register', [AuthController::class, 'registerView'])->name('register.index');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
 
+    Route::get('/forget-password', [AuthController::class, 'forgetPasswordView'])->name('forgetPassword.index');
+    Route::post('/forget-password', [AuthController::class, 'forgetPassword'])->name('forgetPassword');
+
+    Route::get('/reset-password/{token?}', [AuthController::class, 'resetPasswordView'])->name('resetPassword.index');
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('resetPassword');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

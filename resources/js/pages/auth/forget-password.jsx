@@ -23,20 +23,16 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
 
-// axios
-import axios from "axios"
-
 // lucide icon
 import { Loader2 } from "lucide-react"
 
-function login(props) {
+function forgotPassword(props) {
     // state
     const [submitLoading, setSubmitLoading] = useState(false)
 
     // validation
     const validation = yup.object({
         email: yup.string().email('Invalid email format').required('Required!').nullable('Required!'),
-        password: yup.string('Required!').required('Required!').nullable('Required!'),
     }).required()
 
     // form
@@ -44,13 +40,12 @@ function login(props) {
         resolver: yupResolver(validation),
         defaultValues: {
             email: '',
-            password: ''
         }
     })
 
     const onSubmit = (values) => {
         router.post(
-            route('auth.login'),
+            route('auth.forgetPassword'),
             values
         )
     }
@@ -65,9 +60,9 @@ function login(props) {
                     <div className="flex items-center space-x-1">
                         <Link href="/" className="text-xs">Home</Link>
                         <ChevronRight className="w-4 h-4 text-gray-700" />
-                        <p className="text-xs">Login</p>
+                        <p className="text-xs">Forget Password</p>
                     </div>
-                    <p className="text-3xl font-bold text-gray-700">Login</p>
+                    <p className="text-3xl font-bold text-gray-700">Forget Password</p>
                 </div>
                 {/* end title */}
 
@@ -88,19 +83,6 @@ function login(props) {
                                     </FormItem>
                                 )}
                             />
-                            <FormField
-                                control={form.control}
-                                name="password"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Password</FormLabel>
-                                        <FormControl>
-                                            <Input {...field} type="password" autoComplete='off' />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
                             <div className="flex justify-end">
                                 {
                                     submitLoading == true ? (
@@ -109,17 +91,9 @@ function login(props) {
                                             Please wait
                                         </Button>
                                     ) : (
-                                        <Button type="submit">Login</Button>
+                                        <Button type="submit">Submit</Button>
                                     )
                                 }
-                            </div>
-                            <div className="flex flex-col items-center justify-between pt-4">
-                                <div>
-                                    <Link href={route('auth.register.index')} className="text-sm font-semibold text-blue-600">Doesn't have account? Register here</Link>
-                                </div>
-                                <div>
-                                    <Link href={route('auth.forgetPassword.index')} className="text-sm font-semibold text-blue-600">Forgot password? Click here</Link>
-                                </div>
                             </div>
                         </form>
                     </Form>
@@ -131,7 +105,7 @@ function login(props) {
 }
 
 // Render Layout
-login.layout = page => {
+forgotPassword.layout = page => {
     return (
         <Front
             children={page}
@@ -139,4 +113,4 @@ login.layout = page => {
     )
 }
 
-export default login
+export default forgotPassword

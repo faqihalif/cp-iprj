@@ -52,7 +52,7 @@ Route::get('/application-list/create', [AccountController::class, 'applicationLi
 Route::post('/application-list', [AccountController::class, 'applicationListStore'])->name('applicationList.store');
 
 Route::get('/test', function () {
-    return view('mail.review-application-list');
+    return view('mail.reset-password');
 });
 
 

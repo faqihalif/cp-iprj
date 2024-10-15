@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // front
 import Front from '@/layout/front/front'
@@ -23,37 +23,39 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from "react-hook-form"
 import * as yup from 'yup'
 
-// axios
-import axios from "axios"
-
 // lucide icon
 import { Loader2 } from "lucide-react"
 
-function login(props) {
+function resetPassword(props) {
     // state
     const [submitLoading, setSubmitLoading] = useState(false)
 
     // validation
     const validation = yup.object({
-        email: yup.string().email('Invalid email format').required('Required!').nullable('Required!'),
         password: yup.string('Required!').required('Required!').nullable('Required!'),
+        confirmationPassword: yup.string('Required!').required('Required!').nullable('Required!').oneOf([yup.ref("password")], "Passwords do not match"),
     }).required()
 
     // form
     const form = useForm({
         resolver: yupResolver(validation),
         defaultValues: {
-            email: '',
-            password: ''
+            token: '',
+            password: '',
+            confirmationPassword: ''
         }
     })
 
     const onSubmit = (values) => {
         router.post(
-            route('auth.login'),
+            route('auth.resetPassword'),
             values
         )
     }
+
+    useEffect(() => {
+        form.setValue('token', props.token)
+    }, [])
 
     return (
         <div
@@ -65,9 +67,9 @@ function login(props) {
                     <div className="flex items-center space-x-1">
                         <Link href="/" className="text-xs">Home</Link>
                         <ChevronRight className="w-4 h-4 text-gray-700" />
-                        <p className="text-xs">Login</p>
+                        <p className="text-xs">Reset Password</p>
                     </div>
-                    <p className="text-3xl font-bold text-gray-700">Login</p>
+                    <p className="text-3xl font-bold text-gray-700">Reset Password</p>
                 </div>
                 {/* end title */}
 
@@ -77,12 +79,12 @@ function login(props) {
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                             <FormField
                                 control={form.control}
-                                name="email"
+                                name="password"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email</FormLabel>
+                                        <FormLabel>Password</FormLabel>
                                         <FormControl>
-                                            <Input {...field} />
+                                            <Input {...field} type="password" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -90,12 +92,12 @@ function login(props) {
                             />
                             <FormField
                                 control={form.control}
-                                name="password"
+                                name="confirmationPassword"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Password</FormLabel>
+                                        <FormLabel>Password Confirmation</FormLabel>
                                         <FormControl>
-                                            <Input {...field} type="password" autoComplete='off' />
+                                            <Input {...field} type="password" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -109,17 +111,9 @@ function login(props) {
                                             Please wait
                                         </Button>
                                     ) : (
-                                        <Button type="submit">Login</Button>
+                                        <Button type="submit">Submit</Button>
                                     )
                                 }
-                            </div>
-                            <div className="flex flex-col items-center justify-between pt-4">
-                                <div>
-                                    <Link href={route('auth.register.index')} className="text-sm font-semibold text-blue-600">Doesn't have account? Register here</Link>
-                                </div>
-                                <div>
-                                    <Link href={route('auth.forgetPassword.index')} className="text-sm font-semibold text-blue-600">Forgot password? Click here</Link>
-                                </div>
                             </div>
                         </form>
                     </Form>
@@ -131,7 +125,7 @@ function login(props) {
 }
 
 // Render Layout
-login.layout = page => {
+resetPassword.layout = page => {
     return (
         <Front
             children={page}
@@ -139,4 +133,4 @@ login.layout = page => {
     )
 }
 
-export default login
+export default resetPassword
