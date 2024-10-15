@@ -394,7 +394,12 @@
                                             <p>Hello {{ $name }}</p>
                                             <p>We received a request to reset your password for your account. If you made this request, please click the link below to reset your password:</p>
                                             <div class="align-center" style="margin-top: 10px; margin-bottom: 10px;">
-                                                <div><a href="{{ route('auth.resetPassword.index', $token) }}"
+                                                <div><!--[if mso]>
+                                                    <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{ route('auth.resetPassword.index', $token) }}" style="height:40px;v-text-anchor:middle;width:120px;" arcsize="10%" strokecolor="#0E3458" fillcolor="#0E3458">
+                                                      <w:anchorlock/>
+                                                      <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Reset Password</center>
+                                                    </v:roundrect>
+                                                  <![endif]--><a href="{{ route('auth.resetPassword.index', $token) }}"
                                                   style="background-color:#0E3458;border:1px solid #0E3458;border-radius:4px;color:#ffffff;display:inline-block;font-family:sans-serif;font-size:13px;font-weight:bold;line-height:40px;text-align:center;text-decoration:none;width:120px;-webkit-text-size-adjust:none;mso-hide:all;">Reset Password</a></div>
                                             </div>
                                             <p>
