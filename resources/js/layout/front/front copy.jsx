@@ -19,7 +19,6 @@ import { Popover, PopoverButton, PopoverPanel, Menu, MenuButton, MenuItem, MenuI
 import { Button } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/toaster"
 import { useToast } from "@/components/ui/use-toast"
-import { Input } from "@/components/ui/input"
 
 // components
 import UserNav from "./user-nav"
@@ -73,8 +72,8 @@ const admin = props => {
             <div className="antialiased bg-white">
                 <div className="fixed z-10 w-full bg-white shadow">
                     {/* header desktop */}
-                    <div className="hidden lg:flex lg:flex-col">
-                        <div className="flex items-center justify-between w-full px-8 py-4 border-b 2xl:container">
+                    <div className="hidden xl:flex">
+                        <div className="container flex items-center justify-between py-3">
                             {/* logo */}
                             <div className="flex items-center">
                                 <Link href="/">
@@ -85,8 +84,13 @@ const admin = props => {
 
                             {/* menu */}
                             <div className="flex items-center space-x-8">
-                                <Input type="text" placeholder="Search Program" className="w-80" />
-
+                                <Link href="/" className="text-sm font-medium">Home</Link>
+                                <Link href="/programs" className="text-sm font-medium">Programs</Link>
+                                <Link href="/research-and-publication" className="text-sm font-medium">Research & Publication</Link>
+                                <Link href="/lecturer" className="text-sm font-medium">Lecturer</Link>
+                                <Link href="/facility" className="text-sm font-medium">Facility</Link>
+                                <Link href="/about-us" className="text-sm font-medium">About Us</Link>
+                                <Link href="/news" className="text-sm font-medium">News & Event</Link>
                                 {
                                     user == null ? (
                                         <Link href="/auth/login" className="flex">
@@ -101,24 +105,11 @@ const admin = props => {
                             </div>
                             {/* end menu */}
                         </div>
-                        <div className="w-full px-8 2xl:container">
-                            {/* menu */}
-                            <div className="flex items-center py-4 space-x-8">
-                                <Link href="/" className="text-sm font-medium">Home</Link>
-                                <Link href="/programs" className="text-sm font-medium">Programs</Link>
-                                <Link href="/research-and-publication" className="text-sm font-medium">Research & Publication</Link>
-                                <Link href="/lecturer" className="text-sm font-medium">Lecturer</Link>
-                                <Link href="/facility" className="text-sm font-medium">Facility</Link>
-                                <Link href="/about-us" className="text-sm font-medium">About Us</Link>
-                                <Link href="/news" className="text-sm font-medium">News & Event</Link>
-                            </div>
-                            {/* end menu */}
-                        </div>
                     </div>
                     {/* end header desktop */}
 
                     {/* header mobile */}
-                    <div className="relative flex flex-col lg:hidden">
+                    <div className="relative flex flex-col xl:hidden">
                         <Popover as="div" className="container flex items-center justify-between py-3 mx-auto">
                             {({ open }) => (
                                 <>
@@ -177,16 +168,16 @@ const admin = props => {
                     {/* end header mobile */}
                 </div>
 
-                <div className="xl:pt-[134px] pt-[74px] flex flex-col justify-between h-screen">
+                <div className="pt-[88px] flex flex-col justify-between h-screen">
                     {/* main */}
                     {props.children}
                     {/* end main */}
 
                     {/* footer */}
-                    <div className="mt-20 bg-darkblueiprj">
-                        <div className="w-full px-8 py-10 space-y-10 2xl:container">
+                    <div className="mt-20 bg-gray-900">
+                        <div className="container py-10">
                             <div className="grid items-center grid-cols-1 gap-8 sm:grid-cols-2">
-                                <div className="flex flex-col items-center space-x-4 space-y-2 lg:flex-row">
+                                <div className="flex flex-col space-y-2">
                                     <img src="https://inspire.jec.co.id/storage/images/logo-footer.png" alt="Logo IPRJ" className="w-32 mx-auto sm:mx-0" />
                                     <div>
                                         <p className="text-sm font-semibold text-center text-white sm:text-left md:text-base">Institut Pendidikan & Riset JEC</p>
@@ -194,7 +185,7 @@ const admin = props => {
                                         <p className="text-sm text-center text-white sm:text-left md:text-base">Jakarta Barat - 11520</p>
                                     </div>
                                 </div>
-                                <div className="flex justify-center lg:justify-end">
+                                <div className="flex md:justify-end">
                                     <div className="grid grid-cols-2 gap-4 mx-auto md:mx-0">
                                         <div className="flex flex-col space-y-4">
                                             <Link href="/programs" className="text-sm font-medium text-white">Fellowship</Link>
@@ -203,16 +194,13 @@ const admin = props => {
                                             <Link href="/facility" className="text-sm font-medium text-white">Facility</Link>
                                         </div>
                                         <div className="flex flex-col space-y-4">
-                                            <Link href="/research-and-publication" className="text-sm font-medium text-white">Publication</Link>
+                                            <Link href="/programs" className="text-sm font-medium text-white">Curriculum</Link>
                                             <Link href="/lecturer" className="text-sm font-medium text-white">Lecturer</Link>
                                             <Link href="/about-us" className="text-sm font-medium text-white">About Us</Link>
                                             <Link href="/news" className="text-sm font-medium text-white">News & Event</Link>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <p className="text-sm font-semibold text-center text-white">© 2024 Institut Pendidikan & Riset JEC</p>
                             </div>
                         </div>
                     </div>

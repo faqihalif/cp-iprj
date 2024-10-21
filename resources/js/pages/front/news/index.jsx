@@ -22,7 +22,7 @@ function index(props) {
         <div
             style={{ backgroundImage: `url(${BackgroundPattern})`, backgroundSize: "100%", backgroundRepeat: 'no-repeat' }}
         >
-            <div className="container py-4 space-y-4">
+            <div className="w-full px-8 pt-8 space-y-4 2xl:container">
                 {/* title */}
                 <div className="space-y-4">
                     <div className="flex items-center space-x-1">
@@ -35,38 +35,47 @@ function index(props) {
                 {/* end title */}
 
                 {/* content */}
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                    <Link className="flex flex-col space-y-1" href="#">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4">
+                    <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src={News1} alt="image" className="w-full rounded-2xl" />
+                            <div
+                                className="h-[200px] bg-no-repeat bg-cover bg-center rounded-2xl"
+                                style={{ backgroundImage: `url(../storage/images/news/news3.jpg)` }}
+                            ></div>
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
-                                <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
+                                <p className="text-xs font-medium text-gray-700">August 15, 2024</p>
                             </div>
                         </div>
-                        <div> 
-                            <p className="text-sm font-medium text-gray-700 line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
+                        <div>
+                            <p className="text-xl font-medium text-gray-700">Fellowship Presentation</p>
                         </div>
                     </Link>
-                    <Link className="flex flex-col space-y-1" href="#">
+                    <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src={News2} alt="image" className="w-full rounded-2xl" />
+                            <div
+                                className="h-[200px] bg-no-repeat bg-cover bg-center rounded-2xl"
+                                style={{ backgroundImage: `url(../storage/images/news/news1.jpeg)` }}
+                            ></div>
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
-                                <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
+                                <p className="text-xs font-medium text-gray-700">March 15, 2024</p>
                             </div>
                         </div>
-                        <div> 
-                            <p className="text-sm font-medium text-gray-700 line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
+                        <div>
+                            <p className="text-xl font-medium text-gray-700">Baksos Glaucoma Implant</p>
                         </div>
                     </Link>
-                    <Link className="flex flex-col space-y-1" href="#">
+                    <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src={News3} alt="image" className="w-full rounded-2xl" />
+                            <div
+                                className="h-[200px] bg-no-repeat bg-cover bg-center rounded-2xl"
+                                style={{ backgroundImage: `url(../storage/images/news/news2.jpeg)` }}
+                            ></div>
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
-                                <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
+                                <p className="text-xs font-medium text-gray-700">January 8, 2024</p>
                             </div>
                         </div>
-                        <div> 
-                            <p className="text-sm font-medium text-gray-700 line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
+                        <div>
+                            <p className="text-xl font-medium text-gray-700">Wetlab</p>
                         </div>
                     </Link>
                 </div>

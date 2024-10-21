@@ -67,17 +67,17 @@ function index() {
     }
 
     return (
-        <div className="mt-4 space-y-10 md:space-y-40">
-            <div className="container">
+        <div className="mt-4 space-y-16">
+            <div className="w-full 2xl:container">
                 {/* banner */}
                 <Slider {...sliderBanner}>
                     <div>
                         <div
-                            className="md:h-[650px] h-[500px] bg-no-repeat bg-cover bg-center rounded-2xl"
+                            className="md:h-[520px] h-[400px] bg-no-repeat bg-cover bg-center"
                             style={{ backgroundImage: `url(../storage/images/banner.jpg)` }}
                         >
-                            <div className="container flex h-full py-8 md:py-20">
-                                <div className="self-end max-w-screen-sm p-4 space-y-1 md:p-8 bg-black/40 rounded-2xl">
+                            <div className="flex h-full">
+                                <div className="self-end max-w-screen-sm p-4 space-y-1 md:py-8 md:px-16 bg-gradient-to-r from-sky-800 to-black/40">
                                     <p className="text-xl font-semibold text-white md:text-3xl">Because We Care</p>
                                     <p className="text-sm text-justify text-white md:text-base">JEC Eye Hospitals as professional eye healthcare and eye care leader in Indonesia have committed to provide opportunities for ophthalmologists and other medical professionals to expand their knowledge and education through fellowship, observership and training programs.</p>
                                 </div>
@@ -88,76 +88,59 @@ function index() {
                 {/* end banner */}
             </div>
 
-            {/* welcoming message */}
-            <div className="container">
-                <div className="max-w-4xl mx-auto">
-                    <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
-                        <div className="space-y-4">
-                            <div className="space-y-2">
-                                <p className="font-semibold md:text-3xl text-darkblueiprj">Director of JEC Institute of Research & Education</p>
-                                <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
-                            </div>
-                            <div className="space-y-1">
-                                <p className="font-semibold md:text-xl">Welcome to the website of the JEC Institute of Education and Research</p>
-                                <p className="text-sm text-justify text-gray-700 md:text-base">We were born from a noble vision to be actively involved in producing competent eye specialists who are able to overcome global competition in providing eye health services in the community based on clinical evidence and prioritizing patient safety by upholding professional ethics.</p>
-                            </div>
-                        </div>
-                        <div>
-                            <img src="../storage/images/dio&gmec_greeting.png" alt="DIOandGMEC" className="px-10 mx-auto" />
-                        </div>
+            {/* our program */}
+            <div className="w-full 2xl:container">
+                <div className="max-w-4xl px-4 mx-auto">
+                    <div className="mb-8 space-y-4">
+                        <p className="text-3xl font-bold text-center text-sky-800">Our Program</p>
+                        <p className="mb-8 text-sm text-center text-gray-700 md:text-base">JEC Eye Hospitals is recognized both nationally and internationally as one of the leading eye healthcare providers in Indonesia. We gratefully welcome applicants from in and outside the country.</p>
                     </div>
                 </div>
-            </div>
-            {/* end welcoming message */}
-
-            {/* our program mobile */}
-            <div className="container block space-y-4 md:hidden">
-                <div className="space-y-1">
-                    <p className="font-semibold text-darkblueiprj">Our Program</p>
-                    <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
-                </div>
-                <div className="relative flex order-last md:justify-end">
-                    <img src="../storage/images/our_program.jpg" alt="DIOandGMEC" className="w-full mx-auto rounded-2xl md:mx-0" />
-                    <img src="../storage/images/square_gold.png" className="absolute bottom-0 left-0 -mb-20 -ml-8" style={{ zIndex: -1 }} />
-                </div>
-                <p className="mb-4 text-sm text-justify text-gray-700 md:text-base">JEC Eye Hospitals is recognized both nationally and internationally as one of the leading eye healthcare providers in Indonesia. We gratefully welcome applicants from in and outside the country.</p>
-                <Link className="flex" href="/programs">
-                    <Button className="bg-blue-600">
-                        All Programs
-                    </Button>
-                </Link>
-            </div>
-            {/* end our program mobile */}
-
-            {/* our program desktop */}
-            <div className="container hidden md:block">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
-                        <div className="relative flex">
-                            <img src="../storage/images/our_program.jpg" alt="DIOandGMEC" className="mx-auto rounded-2xl" />
-                            <img src="../storage/images/square_gold.png" className="absolute bottom-0 left-0 w-full -mb-10 -ml-3" style={{ zIndex: -1 }} />
-                        </div>
-                        <div>
-                            <div className="mb-4 space-y-2">
-                                <p className="text-3xl font-semibold text-darkblueiprj">Our Program</p>
-                                <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
+                <div className="grid grid-cols-1 lg:grid-cols-3">
+                    <Link href="/programs"
+                        className="lg:h-[240px] h-[160px] bg-no-repeat bg-cover bg-center"
+                        style={{ backgroundImage: `url(../storage/images/program-fellowship.jpg)` }}
+                    >
+                        <div className="flex h-full">
+                            <div className="flex w-full bg-gradient-to-r from-black/50">
+                                <div className="self-center px-8">
+                                    <p className="text-xl font-semibold text-white md:text-3xl">Fellowship</p>
+                                </div>
                             </div>
-                            <p className="mb-8 text-sm text-justify text-gray-700 md:text-base">JEC Eye Hospitals is recognized both nationally and internationally as one of the leading eye healthcare providers in Indonesia. We gratefully welcome applicants from in and outside the country.</p>
-                            <Link className="flex" href="/programs">
-                                <Button className="bg-blue-600">
-                                    All Programs
-                                </Button>
-                            </Link>
                         </div>
-                    </div>
+                    </Link>
+                    <Link href="/programs"
+                        className="lg:h-[240px] h-[160px] bg-no-repeat bg-cover bg-center"
+                        style={{ backgroundImage: `url(../storage/images/program-observership.jpg)` }}
+                    >
+                        <div className="flex h-full">
+                            <div className="flex w-full bg-gradient-to-r from-black/50">
+                                <div className="self-center px-8">
+                                    <p className="text-xl font-semibold text-white md:text-3xl">Observership</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    <Link href="/programs"
+                        className="lg:h-[240px] h-[160px] bg-no-repeat bg-cover bg-center"
+                        style={{ backgroundImage: `url(../storage/images/program-resident.jpg)` }}
+                    >
+                        <div className="flex h-full">
+                            <div className="flex w-full bg-gradient-to-r from-black/50">
+                                <div className="self-center px-8">
+                                    <p className="text-xl font-semibold text-white md:text-3xl">Resident</p>
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
-            {/* end our program desktop */}
+            {/* end our program */}
 
             {/* stats */}
             <div className="container space-y-4 md:space-y-8">
                 <div className="max-w-3xl mx-auto">
-                    <p className="font-semibold text-center text-gray-700 md:text-2xl"><span className="text-rediprj">JEC Institute of Research and Education</span> have a programs to support your professional development and enhance your <span className="text-goldiprj">clinical practice</span></p>
+                    <p className="text-lg font-bold text-center text-gray-700 md:text-2xl"><span className="text-rediprj">JEC Institute of Research and Education</span> have a programs to support your professional development and enhance your <span className="text-goldiprj">clinical practice</span></p>
                 </div>
                 <div className="grid max-w-xs grid-cols-1 mx-auto md:max-w-5xl md:grid-cols-3">
                     <div className="p-10 bg-darkblueiprj rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none">
@@ -176,64 +159,50 @@ function index() {
             </div>
             {/* end stats */}
 
-            {/* our facility mobile */}
-            <div className="container block space-y-4 md:hidden">
-                <div className="space-y-2">
-                    <p className="font-semibold text-darkblueiprj">Facility</p>
-                    <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
-                </div>
-                <div className="relative">
-                    <Slider {...sliderFacility}>
-                        <div>
-                            <img src="../storage/images/facility/lasik_4.jpg" alt="image" className="rounded-xl" />
-                        </div>
-                        <div>
-                            <img src="../storage/images/facility/cdc.jpg" alt="image" className="rounded-xl" />
-                        </div>
-                        <div>
-                            <img src="../storage/images/facility/ot_room3.jpg" alt="image" className="rounded-xl" />
-                        </div>
-                    </Slider>
-                    <img src="../storage/images/dot.png" className="absolute bottom-0 left-0 w-auto h-[600] -ml-60 -mb-10" style={{ zIndex: -1 }} />
-                </div>
-                <p className="mb-4 text-sm text-justify text-gray-700 md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
-                <Link className="flex" href="/facility">
-                    <Button className="bg-blue-600">
-                        Explore Facility
-                    </Button>
-                </Link>
-            </div>
-            {/* end our facility mobile */}
-
             {/* facility desktop */}
-            <div className="container hidden md:block">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid items-center grid-cols-1 gap-8 md:grid-cols-2">
-                        <div className="space-y-4">
-                            <div className="space-y-2">
-                                <p className="text-3xl font-semibold text-darkblueiprj">Facility</p>
-                                <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
+            <div className="2xl:container">
+                <div className="grid grid-cols-1 gap-4 lg:grid-cols-6">
+                    <div className="lg:col-span-4">
+                        <div
+                            className="md:h-[360px] h-[300px] bg-no-repeat bg-cover bg-center"
+                            style={{ backgroundImage: `url(../storage/images/facility.jpg)` }}
+                        >
+                            <div className="flex h-full">
+                                <div className="flex w-full bg-gradient-to-r from-black/70">
+                                    <div className="self-center max-w-2xl p-4 space-y-8 md:px-16">
+                                        <div className="space-y-2">
+                                            <p className="text-xl font-semibold text-white md:text-3xl">Facility</p>
+                                            <p className="text-sm text-justify text-white md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
+                                        </div>
+                                        <Link className="inline-flex" href="/facility">
+                                            <Button className="bg-blue-600">
+                                                Explore More
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </div>
                             </div>
-                            <p className="mb-8 text-sm text-justify text-gray-700 md:text-base">We believe that exceptional facilities are key to exceptional education, we provide high-tech laboratories, interactive classrooms, and an eye clinic with the latest diagnostic equipment.</p>
-                            <Link className="flex" href="/facility">
-                                <Button className="bg-blue-600">
-                                    Explore Facility
-                                </Button>
-                            </Link>
                         </div>
-                        <div className="relative">
-                            <Slider {...sliderFacility}>
-                                <div>
-                                    <img src="../storage/images/facility/lasik_4.jpg" alt="image" className="rounded-xl" />
+                    </div>
+                    <div className="lg:col-span-2">
+                        <div
+                            className="md:h-[360px] h-[300px] bg-no-repeat bg-cover bg-center"
+                            style={{ backgroundImage: `url(../storage/images/dio&gmec_greeting.webp)` }}
+                        >
+                            <div className="flex h-full">
+                                <div className="flex w-full bg-black/30">
+                                    <div className="self-end w-full p-4 space-y-4 md:px-8">
+                                        <Button className="bg-blue-600">
+                                            Welcoming Message
+                                        </Button>
+
+                                        <div>
+                                            <p className="text-sm text-justify text-white md:text-base">Prof. DR. Dr. Widya Artini Wiyogo (Ikke), SpM(K)</p>
+                                            <p className="text-base font-semibold text-white md:text-xl">Director / GMEC Chair</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <img src="../storage/images/facility/cdc.jpg" alt="image" className="rounded-xl" />
-                                </div>
-                                <div>
-                                    <img src="../storage/images/facility/ot_room3.jpg" alt="image" className="rounded-xl" />
-                                </div>
-                            </Slider>
-                            <img src="../storage/images/dot.png" className="absolute bottom-0 left-0 w-auto h-[600] -ml-60 -mb-10" style={{ zIndex: -1 }} />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,56 +210,53 @@ function index() {
             {/* end facility desktop */}
 
             {/* news & event */}
-            <div className="container space-y-4">
+            <div className="container space-y-8">
                 <div className="space-y-1">
-                    <p className="font-semibold md:text-lg text-darkblueiprj">News & Event</p>
-                    <div className="flex-grow w-24 border-t-2 border-goldiprj"></div>
+                    <p className="text-3xl font-bold text-center text-sky-800">News & Event</p>
                 </div>
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
                     <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
+                            <div
+                                className="h-[200px] md:h-[360px] bg-no-repeat bg-cover bg-center rounded-2xl"
+                                style={{ backgroundImage: `url(../storage/images/news/news3.jpg)` }}
+                            ></div>
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
-                                <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
+                                <p className="text-xs font-medium text-gray-700">August 15, 2024</p>
                             </div>
                         </div>
                         <div>
-                            <p className="text-sm font-medium text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
-                        </div>
-                    </Link>
-                    {/* <Link className="flex flex-col gap-4" href="/under-construction">
-                        <div className="relative">
-                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
-                            <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
-                                <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p className="text-sm font-medium text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
+                            <p className="text-xl font-medium text-gray-700">Fellowship Presentation</p>
                         </div>
                     </Link>
                     <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
+                            <div
+                                className="h-[200px] md:h-[360px] bg-no-repeat bg-cover bg-center rounded-2xl"
+                                style={{ backgroundImage: `url(../storage/images/news/news1.jpeg)` }}
+                            ></div>
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
-                                <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
+                                <p className="text-xs font-medium text-gray-700">March 15, 2024</p>
                             </div>
                         </div>
                         <div>
-                            <p className="text-sm font-medium text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
+                            <p className="text-xl font-medium text-gray-700">Baksos Glaucoma Implant</p>
                         </div>
                     </Link>
                     <Link className="flex flex-col gap-4" href="/under-construction">
                         <div className="relative">
-                            <img src="../storage/images/news/news1.jpg" alt="image" className="w-full rounded-2xl" />
+                            <div
+                                className="h-[200px] md:h-[360px] bg-no-repeat bg-cover bg-center rounded-2xl"
+                                style={{ backgroundImage: `url(../storage/images/news/news2.jpeg)` }}
+                            ></div>
                             <div className="absolute px-3 py-1 bg-gray-300 rounded-full top-4 right-4">
-                                <p className="text-xs font-medium text-gray-700">June 12, 2024</p>
+                                <p className="text-xs font-medium text-gray-700">January 8, 2024</p>
                             </div>
                         </div>
                         <div>
-                            <p className="text-sm font-medium text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis orci eget.</p>
+                            <p className="text-xl font-medium text-gray-700">Wetlab</p>
                         </div>
-                    </Link> */}
+                    </Link>
                 </div>
             </div>
             {/* end news & event */}

@@ -60,7 +60,7 @@ function index(props) {
         <div
             style={{ backgroundImage: `url(${BackgroundPattern})`, backgroundSize: "100%", backgroundRepeat: 'no-repeat' }}
         >
-            <div className="container py-4 space-y-4">
+            <div className="w-full px-8 pt-8 space-y-4 2xl:container">
                 {/* title */}
                 <div className="space-y-4">
                     <div className="flex items-center space-x-1">

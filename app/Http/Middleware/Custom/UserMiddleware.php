@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth as Authenticate;
 
-class AuthMiddleware
+class UserMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,10 +18,10 @@ class AuthMiddleware
     {
         $user = Authenticate::user();
 
-        if (!$user) {
+        if ($user) {
             return $next($request);
         } else {
-            return redirect()->route('myProfile.index');
+            return redirect()->route('auth.index');
         }
     }
 }

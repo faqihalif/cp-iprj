@@ -7,7 +7,7 @@ use App\Http\Controllers\AuthController;
 
 Route::group([
     'prefix'        => 'auth',
-    // 'middleware'    => 'admin',
+    'middleware'    => 'authenticate',
     'as'            => 'auth.'
 ], function () {
     Route::get('/login', [AuthController::class, 'index'])->name('index');
@@ -21,6 +21,6 @@ Route::group([
 
     Route::get('/reset-password/{token?}', [AuthController::class, 'resetPasswordView'])->name('resetPassword.index');
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('resetPassword');
-
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
