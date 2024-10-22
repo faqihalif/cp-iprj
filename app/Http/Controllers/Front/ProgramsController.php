@@ -50,6 +50,7 @@ class ProgramsController extends Controller
         $data = [
             'id' => $program->id,
             'name' => $program->name,
+            'name_detail' => $program->name_detail,
             'slug' => $program->slug,
             'type' => $program->type,
             'data' => json_decode($program->data),

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('name_detail')->nullable();
             $table->string('slug')->nullable();
             $table->string('type')->nullable();
             $table->json('data')->nullable();

@@ -27,9 +27,9 @@ function show(props) {
                         <ChevronRight className="w-4 h-4 text-gray-700" />
                         <Link href="/programs" className="text-xs">Programs</Link>
                         <ChevronRight className="w-4 h-4 text-gray-700" />
-                        <p className="text-xs">{props.data.name}</p>
+                        <p className="text-xs">{props.data.name_detail}</p>
                     </div>
-                    <p className="text-3xl font-bold text-gray-700">{props.data.name}</p>
+                    <p className="text-3xl font-bold text-gray-700">{props.data.name_detail}</p>
                 </div>
                 {/* end title */}
 

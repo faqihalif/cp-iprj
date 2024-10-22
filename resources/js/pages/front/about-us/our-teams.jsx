@@ -20,6 +20,7 @@ import Ine from '@/images/our-teams/Ine_Indriani_M.Psi.webp'
 import DrMartin from '@/images/our-teams/Dr.Martin_Hertanto_SpM.webp'
 import DrOce from '@/images/our-teams/Dr.Muhammad_Yoserizal_SpM.webp'
 import DrRinta from '@/images/our-teams/Dr.Paramastri_Arintawati_SpM.webp'
+import Widyarsih from '@/images/our-teams/widyarsih.jpg'
 
 function ourTeams() {
     return (
@@ -43,7 +44,7 @@ function ourTeams() {
                                 <img src={ProfIkke} className="w-56 mx-auto rounded-xl" />
                             </div>
                             <div className="space-y-0.5">
-                                <p className="text-sm font-semibold text-center text-gray-700">Prof. DR. Dr. Widya Artini Wiyogo (Ikke), SpM(K)</p>
+                                <p className="text-sm font-semibold text-center text-gray-700">Prof. DR. Dr. Widya Artini Wiyogo, SpM(K)</p>
                                 <p className="text-xs text-center text-gray-700">Direktur / GMEC Chair</p>
                             </div>
                         </div>
@@ -143,6 +144,15 @@ function ourTeams() {
                                     <p className="text-sm font-semibold text-center text-gray-700">Dr. Paramastri Arintawati, SpM</p>
                                     <p className="text-xs text-center text-gray-700">Program Evaluation Committee Coordinator</p>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="flex flex-col space-y-2">
+                            <div className="flex">
+                                <img src={Widyarsih} className="w-56 mx-auto rounded-xl" />
+                            </div>
+                            <div className="space-y-0.5">
+                                <p className="text-sm font-semibold text-center text-gray-700">Widyarsih Oktaviana, SKM, MKM</p>
+                                <p className="text-xs text-center text-gray-700">Secretariat Program Manager</p>
                             </div>
                         </div>
                     </div>
