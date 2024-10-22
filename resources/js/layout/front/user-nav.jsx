@@ -43,7 +43,7 @@ function userNav(props) {
                     <Link
                         href={route('auth.logout')}
                         className="w-full py-1.5 px-2"
-                        method="post"
+                        method="get"
                         as="button"
                     >
                         Log out
