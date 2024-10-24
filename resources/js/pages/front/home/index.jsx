@@ -167,7 +167,7 @@ function index() {
                             className="md:h-[480px] h-[360px] bg-no-repeat bg-cover bg-center"
                         >
                             <div className="flex h-full">
-                                <div className="flex w-full bg-gradient-to-r from-goldiprj to-black/50">
+                                <div className="flex w-full bg-gradient-to-r from-darkblueiprj to-black/50">
                                     <div className="self-center w-full p-4 space-y-4 md:px-8">
                                         <div>
                                             <p className="mb-4 text-lg font-semibold text-white md:text-2xl">Welcoming Message</p>

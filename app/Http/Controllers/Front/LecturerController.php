@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Lecturer;
 
 class LecturerController extends Controller
 {
@@ -13,7 +14,15 @@ class LecturerController extends Controller
      */
     public function index()
     {
-        return Inertia::render('front/lecturer/index');
+        $professor = Lecturer::where('title', 'Professor')->get();
+        $doctorate = Lecturer::where('title', 'Doctorate / PhD')->get();
+        $ophthalmologist = Lecturer::where('title', 'Ophthalmologist')->get();
+
+        return Inertia::render('front/lecturer/index', [
+            'professor' => $professor,
+            'doctorate' => $doctorate,
+            'ophthalmologist' => $ophthalmologist
+        ]);
     }
 
     /**
